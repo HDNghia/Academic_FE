@@ -32,7 +32,7 @@ function Nodejs() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?date=${dateQuesToday}&&part=theory&&subject=Nodejs`)
+            let res = await axios.get(`http://localhost:3000/v1/question?date=${dateQuesToday}&&part=theory&&subject=Nodejs`)
             setQuestionToday(
                 res.data.data
             )
@@ -41,7 +41,7 @@ function Nodejs() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?subject=Nodejs&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=Nodejs&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -52,7 +52,7 @@ function Nodejs() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?subject=Nodejs&&part=theory`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=Nodejs&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -62,7 +62,7 @@ function Nodejs() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`http://localhost:8080/api/v1/create-question`, data)
+            const res = await axios.post(`http://localhost:3000/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -71,8 +71,9 @@ function Nodejs() {
     }
     const updateQuestion = async (data) => {
         try {
+            console.log("check data: ", data);
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, data)
+            const res = await axios.put(`http://localhost:3000/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -84,36 +85,11 @@ function Nodejs() {
         ToggleEdit()
     }
     const handleDeleteQuestion = async (data) => {
-
-        if (data.imageQuestion != '' && data.imageAnswer == '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?question=${data.imageQuestion}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion == '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion != '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        else {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            let res = await axios.delete(`http://localhost:3000/v1/question/${data._id}`)
+            console.log("check res: ", res);
+        } catch (error) {
+            console.log(error)
         }
         setDelete(
             !Delete
@@ -126,7 +102,7 @@ function Nodejs() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`http://localhost:8080/api/v1/question?question=${search}&&subject=Nodejs&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`http://localhost:3000/v1/question?question=${search}&&subject=Nodejs&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -148,8 +124,8 @@ function Nodejs() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, {
-                id: data.id,
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
+                _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
                 question: data.question,
@@ -169,8 +145,8 @@ function Nodejs() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, {
-                id: data.id,
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
+                _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
                 question: data.question,
@@ -268,10 +244,10 @@ function Nodejs() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'nodejs' ? <>
-                                        <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img src={require(`../../public/image/${QuestionToday[count].imageQuestion}`)} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Nodejs' ? <>
+                                        <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
-                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != "" ? <><img src={require(`../../public/image/${QuestionToday[count].imageAnswer}`)} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
+                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
                                         {/* {!result ? <h1 class='m-5'>{QuestionToday[count].question}</h1> : <h1 class='m-5'>{QuestionToday[count].answer}</h1>} */}
                                         <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                                         <div class="mb-5 mt-2">
@@ -372,10 +348,10 @@ function Nodejs() {
 
                                         <tr>
                                             <td>{dem++}</td>
-                                            <td width="25%">{item.imageQuestion != '' ? <> <img src={require(`../../public/image/${item.imageQuestion}`)} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
+                                            <td width="25%">{item.imageQuestion != '' ? <> <img src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
-                                            <td width="30%">{item.imageAnswer != '' ? <> <img src={require(`../../public/image/${item.imageAnswer}`)} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
+                                            <td width="30%">{item.imageAnswer != '' ? <> <img src={item.imageAnswer} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
                                             {/* <td width="30%">{item.imageAnswer.substring(    item.answer.lastIndexOf(" // ") - 3, item.answer.lastIndexOf(" // ")) == "jpg" ? <><img src={require(`../../public/image/${item.answer.substring(0, item.answer.lastIndexOf(" // "))}`)} width="50" /> <br /> {item.answer.substring(item.answer.lastIndexOf(" // ") + 3, item.answer.length)} </> : <>{item.answer}</>}</td> */}
                                             {/* <td>{item.answer}</td> */}
                                             <td>{item.numberDate}</td>

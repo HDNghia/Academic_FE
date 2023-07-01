@@ -9,7 +9,7 @@ function Update(props) {
     let data = props.currentQuestion;
     console.log('check data from child: ', data);
     const [state, setState] = useState({
-        id: data.id,
+        _id: data._id,
         imageQuestion: data.imageQuestion,
         imageAnswer: data.imageAnswer,
         question: data.question,
@@ -88,14 +88,13 @@ function Update(props) {
     const handleUpdate = async () => {
         if (imgQuestion != null && state.imageQuestion != '' && imgAnswer == null) {
             try {
-                const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-                console.log('check file question from BE: ', res.data.FileName);
+                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+                console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
-                copyState["imageQuestion"] = res.data.FileName;
+                copyState["imageQuestion"] = res.data.downloadURL;
                 let isValid = checkValideInput();
                 if (isValid === true) {
                     props.updateQuestion(copyState);
-                    const DelImage = await axios.put(`http://localhost:8080/api/v1/update-question?question=${state.imageQuestion}`, state)
                     console.log("data modal: ", copyState);
                 }
             } catch (error) {
@@ -104,10 +103,10 @@ function Update(props) {
         }
         else if (imgQuestion != null && state.imageQuestion == '' && imgAnswer == null) {
             try {
-                const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-                console.log('check file question from BE: ', res.data.FileName);
+                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+                console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
-                copyState["imageQuestion"] = res.data.FileName;
+                copyState["imageQuestion"] = res.data.downloadURL;
                 let isValid = checkValideInput();
                 if (isValid === true) {
                     props.updateQuestion(copyState);
@@ -118,23 +117,22 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer != '' && imgQuestion == null) {
-            const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', res.data.FileName);
+            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageAnswer"] = res.data.FileName;
+            copyState["imageAnswer"] = res.data.downloadURL;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
             if (isValid === true) {
                 props.updateQuestion(copyState);
-                const DelImage = await axios.put(`http://localhost:8080/api/v1/update-question?answer=${state.imageAnswer}`, state)
                 console.log("data modal: ", state);
             }
         }
         else if (imgAnswer != null && state.imageAnswer == '' && imgQuestion == null) {
-            const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', res.data.FileName);
+            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageAnswer"] = res.data.FileName;
+            copyState["imageAnswer"] = res.data.downloadURL;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
             if (isValid === true) {
@@ -143,30 +141,29 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer != '' && imgQuestion != null && state.imageQuestion != '') {
-            const resQuestion = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-            console.log('check file name from BE: ', resQuestion.data.FileName);
-            const resAnswer = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', resAnswer.data.FileName);
+            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+            console.log('check file name from BE: ', resQuestion.data.downloadURL);
+            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageQuestion"] = resQuestion.data.FileName;
-            copyState["imageAnswer"] = resAnswer.data.FileName;
+            copyState["imageQuestion"] = resQuestion.data.downloadURL;
+            copyState["imageAnswer"] = resAnswer.data.downloadURL;
             copyState["question"] = state.question;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
             if (isValid === true) {
                 props.updateQuestion(copyState);
-                const DelImage = await axios.put(`http://localhost:8080/api/v1/update-question?question=${state.imageQuestion}&&answer=${state.imageAnswer}`, state)
                 console.log("data modal: ", state);
             }
         }
         else if (imgAnswer != null && state.imageAnswer == '' && imgQuestion != null && state.imageQuestion == '') {
-            const resQuestion = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-            console.log('check file name from BE: ', resQuestion.data.FileName);
-            const resAnswer = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', resAnswer.data.FileName);
+            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+            console.log('check file name from BE: ', resQuestion.data.downloadURL);
+            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageQuestion"] = resQuestion.data.FileName;
-            copyState["imageAnswer"] = resAnswer.data.FileName;
+            copyState["imageQuestion"] = resQuestion.data.downloadURL;
+            copyState["imageAnswer"] = resAnswer.data.downloadURL;
             copyState["question"] = state.question;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
@@ -191,7 +188,7 @@ function Update(props) {
                 <ModalBody>
                     <Form >
                         <FormGroup>
-                            {state.imageQuestion != '' && imgQuestion == null ? <img src={require(`../../../public/image/${state.imageQuestion}`)} width="466" /> : <><img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} /></>}
+                            {state.imageQuestion != '' && imgQuestion == null ? <img src={state.imageQuestion} width="466" /> : <><img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} /></>}
                             {/* <h4>Ảnh thay thế</h4> <br /> <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} /> */}
                             {/* <img src={require(`../../../public/image/${state.image}`)} width="466" />
                             {imgQuestion != null ? <> <h4>Ảnh thay thế</h4> <br /> <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} /> </> : <><img src={require(`../../../public/image/${state.image}`)} width="466" /></>} */}
@@ -210,7 +207,7 @@ function Update(props) {
                             />
                         </FormGroup>
                         <FormGroup>
-                            {state.imageAnswer != '' && imgAnswer == null ? <img src={require(`../../../public/image/${state.imageAnswer}`)} width="466" /> : <><img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} /></>}
+                            {state.imageAnswer != '' && imgAnswer == null ? <img src={state.imageAnswer} width="466" /> : <><img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} /></>}
                             {/* <h4>Ảnh thay thế</h4> <br /> <img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} /> */}
                             <Label for="answer" class="font-weight-bold">
                                 Đáp án

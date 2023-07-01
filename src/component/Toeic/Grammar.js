@@ -32,7 +32,7 @@ function Grammar() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?date=${dateQuesToday}&&part=Grammar&&subject=english`)
+            let res = await axios.get(`http://localhost:3000/v1/question?date=${dateQuesToday}&&part=Grammar&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -41,7 +41,7 @@ function Grammar() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?subject=english&&part=Grammar&&page=${page}&&limit=9`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Grammar&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -52,7 +52,7 @@ function Grammar() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:8080/api/v1/question?subject=english&&part=Grammar`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Grammar`);
             setLengthQuestion(
                 res.data.data
             )
@@ -62,7 +62,7 @@ function Grammar() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`http://localhost:8080/api/v1/create-question`, data)
+            const res = await axios.post(`http://localhost:3000/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -72,7 +72,7 @@ function Grammar() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, data)
+            const res = await axios.put(`http://localhost:3000/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -84,36 +84,11 @@ function Grammar() {
         ToggleEdit()
     }
     const handleDeleteQuestion = async (data) => {
-
-        if (data.imageQuestion != '' && data.imageAnswer == '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?question=${data.imageQuestion}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion == '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion != '') {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        else {
-            try {
-                let res = await axios.delete(`http://localhost:8080/api/v1/delete-question/${data.id}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            let res = await axios.delete(`http://localhost:3000/v1/question/${data._id}`)
+            console.log("check res: ", res);
+        } catch (error) {
+            console.log(error)
         }
         setDelete(
             !Delete
@@ -126,7 +101,7 @@ function Grammar() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`http://localhost:8080/api/v1/question?question=${search}&&subject=english&&part=Grammar&&page=${page}&&limit=9`);
+        let res = await axios.get(`http://localhost:3000/v1/question?question=${search}&&subject=english&&part=Grammar&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -147,8 +122,8 @@ function Grammar() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, {
-                id: data.id,
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
+                _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
                 question: data.question,
@@ -168,8 +143,8 @@ function Grammar() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`http://localhost:8080/api/v1/update-question`, {
-                id: data.id,
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
+                _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
                 question: data.question,
@@ -359,10 +334,10 @@ function Grammar() {
 
                                         <tr>
                                             <td>{dem++}</td>
-                                            <td width="25%">{item.imageQuestion != '' ? <> <img src={require(`../../public/image/${item.imageQuestion}`)} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
+                                            <td width="25%">{item.imageQuestion != '' ? <> <img src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
-                                            <td width="30%">{item.imageAnswer != '' ? <> <img src={require(`../../public/image/${item.imageAnswer}`)} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
+                                            <td width="30%">{item.imageAnswer != '' ? <> <img src={item.imageAnswer} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
                                             {/* <td width="30%">{item.imageAnswer.substring(    item.answer.lastIndexOf(" // ") - 3, item.answer.lastIndexOf(" // ")) == "jpg" ? <><img src={require(`../../public/image/${item.answer.substring(0, item.answer.lastIndexOf(" // "))}`)} width="50" /> <br /> {item.answer.substring(item.answer.lastIndexOf(" // ") + 3, item.answer.length)} </> : <>{item.answer}</>}</td> */}
                                             {/* <td>{item.answer}</td> */}
                                             <td>{item.numberDate}</td>

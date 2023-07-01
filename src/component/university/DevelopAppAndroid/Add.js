@@ -58,10 +58,10 @@ function Add(props) {
     const handleAddNewQuestion = async () => {
         if (imgQuestion != null && imgAnswer == null) {
             try {
-                const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-                console.log('check file question from BE: ', res.data.FileName);
+                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+                console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
-                copyState["imageQuestion"] = res.data.FileName;
+                copyState["imageQuestion"] = res.data.downloadURL;
                 copyState["question"] = state.question;
                 let isValid = checkValideInput();
                 if (isValid === true) {
@@ -74,10 +74,10 @@ function Add(props) {
 
         }
         else if (imgAnswer != null && imgQuestion == null) {
-            const res = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', res.data.FileName);
+            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageAnswer"] = res.data.FileName;
+            copyState["imageAnswer"] = res.data.downloadURL;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
             if (isValid === true) {
@@ -86,13 +86,13 @@ function Add(props) {
             }
         }
         else if (imgAnswer != null && imgQuestion != null) {
-            const resQuestion = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileQuestion)
-            console.log('check file name from BE: ', resQuestion.data.FileName);
-            const resAnswer = await axios.post(`http://localhost:8080/api/v1/upload-profile-pic`, fileAnswer)
-            console.log('check file name from BE: ', resAnswer.data.FileName);
+            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+            console.log('check file name from BE: ', resQuestion.data.downloadURL);
+            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
-            copyState["imageQuestion"] = resQuestion.data.FileName;
-            copyState["imageAnswer"] = resAnswer.data.FileName;
+            copyState["imageQuestion"] = resQuestion.data.downloadURL;
+            copyState["imageAnswer"] = resAnswer.data.downloadURL;
             copyState["question"] = state.question;
             copyState["answer"] = state.answer;
             let isValid = checkValideInput();
