@@ -88,7 +88,7 @@ function Update(props) {
     const handleUpdate = async () => {
         if (imgQuestion != null && state.imageQuestion != '' && imgAnswer == null) {
             try {
-                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+                const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
                 console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
                 copyState["imageQuestion"] = res.data.downloadURL;
@@ -103,7 +103,7 @@ function Update(props) {
         }
         else if (imgQuestion != null && state.imageQuestion == '' && imgAnswer == null) {
             try {
-                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+                const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
                 console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
                 copyState["imageQuestion"] = res.data.downloadURL;
@@ -117,7 +117,7 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer != '' && imgQuestion == null) {
-            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
             copyState["imageAnswer"] = res.data.downloadURL;
@@ -129,7 +129,7 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer == '' && imgQuestion == null) {
-            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
             copyState["imageAnswer"] = res.data.downloadURL;
@@ -141,9 +141,9 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer != '' && imgQuestion != null && state.imageQuestion != '') {
-            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+            const resQuestion = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
             console.log('check file name from BE: ', resQuestion.data.downloadURL);
-            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            const resAnswer = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
             copyState["imageQuestion"] = resQuestion.data.downloadURL;
@@ -157,9 +157,9 @@ function Update(props) {
             }
         }
         else if (imgAnswer != null && state.imageAnswer == '' && imgQuestion != null && state.imageQuestion == '') {
-            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
+            const resQuestion = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
             console.log('check file name from BE: ', resQuestion.data.downloadURL);
-            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
+            const resAnswer = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
             copyState["imageQuestion"] = resQuestion.data.downloadURL;

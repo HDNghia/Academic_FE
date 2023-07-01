@@ -32,7 +32,7 @@ function Reading() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?date=${dateQuesToday}&&part=Reading&&subject=english`)
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=Reading&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -41,7 +41,7 @@ function Reading() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Reading&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=english&&part=Reading&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -52,7 +52,7 @@ function Reading() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Reading`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=english&&part=Reading`);
             setLengthQuestion(
                 res.data.data
             )
@@ -62,7 +62,7 @@ function Reading() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`http://localhost:3000/v1/question`, data)
+            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -72,7 +72,7 @@ function Reading() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`http://localhost:3000/v1/question`, data)
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -86,21 +86,21 @@ function Reading() {
     const handleDeleteQuestion = async (data) => {
         if (data.imageQuestion != '' && data.imageAnswer == '') {
             try {
-                let res = await axios.delete(`http://localhost:3000/v1/delete-question/${data._id}?question=${data.imageQuestion}`)
+                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?question=${data.imageQuestion}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
             }
         } else if (data.imageAnswer != '' && data.imageQuestion == '') {
             try {
-                let res = await axios.delete(`http://localhost:3000/v1/delete-question/${data._id}?answer=${data.imageAnswer}`)
+                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?answer=${data.imageAnswer}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
             }
         } else if (data.imageAnswer != '' && data.imageQuestion != '') {
             try {
-                let res = await axios.delete(`http://localhost:3000/v1/delete-question/${data._id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
+                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
@@ -108,7 +108,7 @@ function Reading() {
         }
         else {
             try {
-                let res = await axios.delete(`http://localhost:3000/v1/delete-question/${data._id}`)
+                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
@@ -125,7 +125,7 @@ function Reading() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`http://localhost:3000/v1/question?question=${search}&&subject=english&&part=Reading&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=english&&part=Reading&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -146,7 +146,7 @@ function Reading() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`http://localhost:3000/v1/question`, {
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -167,7 +167,7 @@ function Reading() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`http://localhost:3000/v1/question`, {
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,

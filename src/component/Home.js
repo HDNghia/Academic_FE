@@ -40,8 +40,8 @@ function Home() {
     }
     useEffect(() => {
         async function fetchMyAPI() {
-            let res = await axios.get(`http://localhost:3000/v1/vocabulary`);
-            let res1 = await axios.get(`http://localhost:3000/v1/question?subject=android`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/vocabulary`);
+            let res1 = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=android`);
 
             setVocabulary(
                 res.data ? res.data.data : []
