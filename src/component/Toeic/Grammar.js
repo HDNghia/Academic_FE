@@ -33,7 +33,7 @@ function Grammar() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?date=${dateQuesToday}&&part=Grammar&&subject=english`)
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=Grammar&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Grammar() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Grammar&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=english&&part=Grammar&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Grammar() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`http://localhost:3000/v1/question?subject=english&&part=Grammar`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=english&&part=Grammar`);
             setLengthQuestion(
                 res.data.data
             )
@@ -63,7 +63,7 @@ function Grammar() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`http://localhost:3000/v1/question`, data)
+            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -73,7 +73,7 @@ function Grammar() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`http://localhost:3000/v1/question`, data)
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -86,7 +86,7 @@ function Grammar() {
     }
     const handleDeleteQuestion = async (data) => {
         try {
-            let res = await axios.delete(`http://localhost:3000/v1/question/${data._id}`)
+            let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/question/${data._id}`)
             console.log("check res: ", res);
         } catch (error) {
             console.log(error)
@@ -102,7 +102,7 @@ function Grammar() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`http://localhost:3000/v1/question?question=${search}&&subject=english&&part=Grammar&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=english&&part=Grammar&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -123,7 +123,7 @@ function Grammar() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`http://localhost:3000/v1/question`, {
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -144,7 +144,7 @@ function Grammar() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`http://localhost:3000/v1/question`, {
+            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
