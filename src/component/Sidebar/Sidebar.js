@@ -11,7 +11,7 @@ function Sidebar() {
         menu.classList.toggle("fliph");
         menuIcon.classList.toggle("fliph");
         setState(!state)
-        if (state) {
+        if (!state) {
             document.getElementsByClassName('seacrch_name')[0].style.setProperty("display", "block")
         } else {
             document.getElementsByClassName('seacrch_name')[0].style.setProperty("display", "none")

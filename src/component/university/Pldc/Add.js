@@ -158,7 +158,7 @@ function Add(props) {
                             {
                                 imgQuestion && (
                                     <div>
-                                        <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} />
+                                        <img src={imgQuestion} class="imageUpdate previewQuestion" id="previewQuestion" width={466} />
                                         <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgQuestion(null); setFileQuestion(null) }}>Remove</button>
                                     </div>
                                 )
@@ -167,8 +167,9 @@ function Add(props) {
                             {selectedImageQuestion && (
                                 <div>
                                     <img
+                                        class="imageUpdate"
                                         alt="not found"
-                                        width={"446px"}
+                                        width={446}
                                         src={URL.createObjectURL(selectedImageQuestion)}
                                     />
                                     <br />
@@ -207,7 +208,7 @@ function Add(props) {
                             {
                                 imgAnswer && (
                                     <div>
-                                        <img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} />
+                                        <img src={imgAnswer} class="imageUpdate previewAnswer" id="previewAnswer" width={466} />
                                         <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgAnswer(null); setFileAnswer(null) }}>Remove</button>
                                     </div>
                                 )
@@ -215,6 +216,7 @@ function Add(props) {
                             {selectedImageAnswer && (
                                 <div>
                                     <img
+                                        class="imageUpdate"
                                         alt="not found"
                                         width={"446px"}
                                         src={URL.createObjectURL(selectedImageAnswer)}
