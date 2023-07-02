@@ -22,6 +22,8 @@ function Add(props) {
     const [imgAnswer, setImgAnswer] = useState(null);
     const [fileQuestion, setFileQuestion] = useState(null)
     const [fileAnswer, setFileAnswer] = useState(null)
+    const [selectedImageQuestion, setSelectedImageQuestion] = useState(null);
+    const [selectedImageAnswer, setSelectedImageAnswer] = useState(null);
     const handleOnchangeInput = (event, item) => {
         let copyState = { ...state }
         copyState[item] = event.target.value;
@@ -32,27 +34,27 @@ function Add(props) {
     const checkValideInput = () => {
         let isValid = true;
         let arrInput = []
-        if (imgQuestion != null && imgAnswer == null) {
-            arrInput = ['answer', 'part']
-        }
-        else if (imgAnswer != null && imgQuestion == null) {
-            arrInput = ['question', 'part']
-        }
-        else if (imgAnswer != null && imgQuestion != null) {
-            arrInput = ['part']
-        }
-        else {
-            arrInput = ['question', 'answer', 'part']
-        }
+        // if (imgQuestion != null || selectedImageQuestion != null && imgAnswer == null) {
+        //     arrInput = ['answer', 'part']
+        // }
+        // else if (imgAnswer != null || selectedImageAnswer != null && imgQuestion == null) {
+        //     arrInput = ['question', 'part']
+        // }
+        // else if (imgAnswer != null || selectedImageAnswer != null && imgQuestion != null || selectedImageQuestion != null) {
+        //     arrInput = ['part']
+        // }
+        // else {
+        arrInput = ['question', 'answer', 'part']
+        // }
         // let arrInput = ['question', 'answer', 'part']
-        for (let i = 0; i < arrInput.length; i++) {
-            console.log('check inside loop', state[arrInput[i]], arrInput[i])
-            if (!state[arrInput[i]]) {
-                isValid = false;
-                alert('Missing parameter: ' + arrInput[i]);
-                break;
-            }
-        }
+        // for (let i = 0; i < arrInput.length; i++) {
+        //     console.log('check inside loop', state[arrInput[i]], arrInput[i])
+        //     if (!state[arrInput[i]]) {
+        //         isValid = false;
+        //         alert('Missing parameter: ' + arrInput[i]);
+        //         break;
+        //     }
+        // }
         return isValid;
     }
     const handleAddNewQuestion = async () => {
@@ -153,7 +155,26 @@ function Add(props) {
                             <Label for="name" class="font-weight-bold">
                                 Câu hỏi
                             </Label>
-                            <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} />
+                            {
+                                imgQuestion && (
+                                    <div>
+                                        <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} />
+                                        <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgQuestion(null); setFileQuestion(null) }}>Remove</button>
+                                    </div>
+                                )
+                            }
+
+                            {selectedImageQuestion && (
+                                <div>
+                                    <img
+                                        alt="not found"
+                                        width={"446px"}
+                                        src={URL.createObjectURL(selectedImageQuestion)}
+                                    />
+                                    <br />
+                                    <button class="btn btn-danger mt-1 mb-1" onClick={() => { setSelectedImageQuestion(null); setFileQuestion(null) }}>Remove</button>
+                                </div>
+                            )}
                             <Input
                                 onPaste={handlePasteQuestion}
                                 id="question"
@@ -161,18 +182,72 @@ function Add(props) {
                                 onChange={(event) => handleOnchangeInput(event, "question")}
                                 value={state.question}
                             />
+                            <input
+                                class="mt-1"
+                                type="file"
+                                name="myImage"
+                                onChange={(event) => {
+                                    console.log(event.target.files[0]);
+                                    setSelectedImageQuestion(event.target.files[0]);
+                                    const formData = new FormData();
+                                    // Update the formData object
+                                    formData.append(
+                                        "profile_pic",
+                                        event.target.files[0],
+                                        event.target.files[0].name
+                                    );
+                                    setFileQuestion(formData)
+                                }}
+                            />
                         </FormGroup>
                         <FormGroup>
                             <Label for="mean" class="font-weight-bold">
                                 Đáp án
                             </Label>
-                            <img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} />
+                            {
+                                imgAnswer && (
+                                    <div>
+                                        <img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} />
+                                        <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgAnswer(null); setFileAnswer(null) }}>Remove</button>
+                                    </div>
+                                )
+                            }
+                            {selectedImageAnswer && (
+                                <div>
+                                    <img
+                                        alt="not found"
+                                        width={"446px"}
+                                        src={URL.createObjectURL(selectedImageAnswer)}
+                                    />
+                                    <br />
+                                    <button class="btn btn-danger mt-1 mb-1" onClick={() => { setSelectedImageAnswer(null); setFileAnswer(null) }}>Remove</button>
+                                </div>
+                            )}
+
                             <Input
                                 onPaste={handlePasteAnswer}
                                 id="answer"
                                 name="answer"
                                 onChange={(event) => handleOnchangeInput(event, "answer")}
                                 value={state.answer}
+                            />
+                            <input
+                                class="mt-1"
+                                type="file"
+                                name="myImage"
+                                onChange={(event) => {
+                                    console.log(event.target.files[0]);
+                                    setSelectedImageAnswer(event.target.files[0]);
+                                    const formData = new FormData();
+                                    // Update the formData object
+                                    formData.append(
+                                        "profile_pic",
+                                        event.target.files[0],
+                                        event.target.files[0].name
+                                    );
+                                    setFileAnswer(formData)
+                                }}
+
                             />
                         </FormGroup>
                         <Button color="primary" onClick={() => handleAddNewQuestion()}>

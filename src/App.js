@@ -1,17 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Sidebar from './component/Sidebar/Sidebar';
-import Android from './component/university/Android';
-import Vocabulary from './component/Toeic/Vocabulary';
-import Grammar from './component/Toeic/Grammar';
-import Home from './component/Home';
-import Olap from './component/university/Olap';
-import Ptdlkd from './component/university/Ptdlkd';
-import Qtclkd from './component/university/Qtclkd';
-import Pldc from './component/university/Pldc';
-import Listenning from './component/Toeic/Listenning';
-import Reading from './component/Toeic/Reading';
+import Sidebar from './component/Sidebar/Sidebar.js';
+import Android from './component/university/Android.js';
+import Vocabulary from './component/Toeic/Vocabulary.js';
+import Grammar from './component/Toeic/Grammar.js';
+import Olap from './component/university/Olap.js';
+import Ptdlkd from './component/university/Ptdlkd.js';
+import Sales from './component/university/sales.js';
+import Pldc from './component/university/Pldc.js';
+import Listenning from './component/Toeic/Listenning.js';
+import Reading from './component/Toeic/Reading.js';
 import Reactjs from './component/Work/Reactjs';
 import Nodejs from './component/Work/Nodejs';
 import Sql from './component/Work/Sql';
@@ -75,8 +74,8 @@ function App() {
           <Route path="/Ptdlkd">
             <Ptdlkd />
           </Route>
-          <Route path="/Qtclkd">
-            <Qtclkd />
+          <Route path="/Sales">
+            <Sales />
           </Route>
           <Route path="/Pldc">
             <Pldc />

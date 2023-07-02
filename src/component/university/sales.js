@@ -1,11 +1,11 @@
-import Add from "./Qtclkd/Add";
-import Update from "./Qtclkd/Update";
+import Add from "./Sales/Add";
+import Update from "./Sales/Update";
 import { useEffect, useState } from "react";
 import "../Responsive.css"
 import axios from "axios";
 import moment from "moment";
-import Revise from "./Qtclkd/Revise";
-function Qtclkd() {
+import Revise from "./Sales/Revise";
+function Sales() {
     const [listQuestion, setListQuestion] = useState([]);
     const [lengthQuestion, setLengthQuestion] = useState([]);
     const [modal, setModal] = useState(false);
@@ -33,7 +33,7 @@ function Qtclkd() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=theory&&subject=Qtclkd`)
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=theory&&subject=Sales`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Qtclkd() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Sales&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Qtclkd() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Qtclkd&&part=theory`);
+            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Sales&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -102,7 +102,7 @@ function Qtclkd() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=Sales&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -244,10 +244,10 @@ function Qtclkd() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'qtclkd' ? <>
-                                        <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img src={require(`../../public/image/${QuestionToday[count].imageQuestion}`)} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <> {QuestionToday[count].question}</>}</h4>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Sales' ? <>
+                                        <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
-                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != "" ? <><img src={require(`../../public/image/${QuestionToday[count].imageAnswer}`)} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
+                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
                                         {/* {!result ? <h1 class='m-5'>{QuestionToday[count].question}</h1> : <h1 class='m-5'>{QuestionToday[count].answer}</h1>} */}
                                         <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                                         <div class="mb-5 mt-2">
@@ -376,4 +376,4 @@ function Qtclkd() {
         </>
     )
 }
-export default Qtclkd;
+export default Sales;

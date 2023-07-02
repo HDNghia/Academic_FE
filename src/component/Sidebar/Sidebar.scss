@@ -8,8 +8,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.seacrch_name {
-    display: none;
+@media only screen and (max-width: 600px) {
+    .seacrch_name {
+        display: none;
+    }
+
 }
 
 /** ======================  base css ==============================**/

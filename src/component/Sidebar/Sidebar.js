@@ -49,7 +49,7 @@ function Sidebar() {
                                     <li ><Link to="/Android" activeClassName="active" exact={true}>Lập trình ứng dụng android</Link></li>
                                     <li ><Link to="/olap" activeClassName="active" exact={true}>Kho dữ liệu và olap</Link></li>
                                     <li ><Link to="/Ptdlkd" activeClassName="active" exact={true}>Phân tích dữ liệu kinh doanh</Link></li>
-                                    <li ><Link to="/Qtclkd" activeClassName="active" exact={true}>Quản trị chiến lược kinh doanh</Link></li>
+                                    <li ><Link to="/Sales" activeClassName="active" exact={true}>Sales</Link></li>
                                     <li ><Link to="/Pldc" activeClassName="active" exact={true}>Pháp luật đại cương</Link></li>
                                 </ul>
                             </li>
