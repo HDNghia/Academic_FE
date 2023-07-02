@@ -58,7 +58,7 @@ function Add(props) {
     const handleAddNewQuestion = async () => {
         if (imgQuestion != null && imgAnswer == null) {
             try {
-                const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
+                const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
                 console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
                 copyState["imageQuestion"] = res.data.downloadURL;
@@ -74,7 +74,7 @@ function Add(props) {
 
         }
         else if (imgAnswer != null && imgQuestion == null) {
-            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
+            const res = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
             copyState["imageAnswer"] = res.data.downloadURL;
@@ -86,9 +86,9 @@ function Add(props) {
             }
         }
         else if (imgAnswer != null && imgQuestion != null) {
-            const resQuestion = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
+            const resQuestion = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileQuestion)
             console.log('check file name from BE: ', resQuestion.data.downloadURL);
-            const resAnswer = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
+            const resAnswer = await axios.post(`http://localhost:3000/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
             copyState["imageQuestion"] = resQuestion.data.downloadURL;

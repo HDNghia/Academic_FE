@@ -1,6 +1,7 @@
 import Add from "./Qtclkd/Add";
 import Update from "./Qtclkd/Update";
 import { useEffect, useState } from "react";
+import "../Responsive.css"
 import axios from "axios";
 import moment from "moment";
 import Revise from "./Qtclkd/Revise";
@@ -32,7 +33,7 @@ function Qtclkd() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=theory&&subject=Qtclkd`)
+            let res = await axios.get(`http://localhost:3000/v1/question?date=${dateQuesToday}&&part=theory&&subject=Qtclkd`)
             setQuestionToday(
                 res.data.data
             )
@@ -41,7 +42,7 @@ function Qtclkd() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -52,7 +53,7 @@ function Qtclkd() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Qtclkd&&part=theory`);
+            let res = await axios.get(`http://localhost:3000/v1/question?subject=Qtclkd&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -62,7 +63,7 @@ function Qtclkd() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
+            const res = await axios.post(`http://localhost:3000/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -72,7 +73,7 @@ function Qtclkd() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
+            const res = await axios.put(`http://localhost:3000/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -85,7 +86,7 @@ function Qtclkd() {
     }
     const handleDeleteQuestion = async (data) => {
         try {
-            let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/question/${data._id}`)
+            let res = await axios.delete(`http://localhost:3000/v1/question/${data._id}`)
             console.log("check res: ", res);
         } catch (error) {
             console.log(error)
@@ -101,7 +102,7 @@ function Qtclkd() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`http://localhost:3000/v1/question?question=${search}&&subject=Qtclkd&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -123,7 +124,7 @@ function Qtclkd() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -144,7 +145,7 @@ function Qtclkd() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
+            const res = await axios.put(`http://localhost:3000/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -323,7 +324,7 @@ function Qtclkd() {
                 <div class="row mb-2 ml-1 mt-2">
                     <div class="row col-5">
                         <span><input type='text' onChange={(search) => Search(search)} value={search} class="form-control seacrch_name" placeholder='Tìm kiếm' /></span>
-                        <span><input type="button" class="btn btn-success ml-2" value="Tìm kiếm câu hỏi" /></span>
+                        <span><input type="button" class="search_btn btn btn-success ml-2" value="Tìm kiếm câu hỏi" /></span>
                     </div>
                     <div class="text-right col-7 ml-4">
                         <button class="btn btn-primary text-center" onClick={() => Toggle()}>Thêm câu hỏi</button>
@@ -336,7 +337,7 @@ function Qtclkd() {
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
                         <th>Ngày</th>
-                        <th>Trạng thái</th>
+                        <th class="status">Trạng thái</th>
                         <th>Thao tác</th>
                     </thead>
                     <tbody>
@@ -347,15 +348,15 @@ function Qtclkd() {
 
                                         <tr>
                                             <td>{dem++}</td>
-                                            <td width="25%">{item.imageQuestion != '' ? <> <img src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
+                                            <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
-                                            <td width="30%">{item.imageAnswer != '' ? <> <img src={item.imageAnswer} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
+                                            <td width="30%">{item.imageAnswer != '' ? <> <img class="image_table" src={item.imageAnswer} width="50" /> <br />{item.answer} </> : <>{item.answer}</>}</td>
                                             {/* <td width="30%">{item.imageAnswer.substring(    item.answer.lastIndexOf(" // ") - 3, item.answer.lastIndexOf(" // ")) == "jpg" ? <><img src={require(`../../public/image/${item.answer.substring(0, item.answer.lastIndexOf(" // "))}`)} width="50" /> <br /> {item.answer.substring(item.answer.lastIndexOf(" // ") + 3, item.answer.length)} </> : <>{item.answer}</>}</td> */}
                                             {/* <td>{item.answer}</td> */}
                                             <td>{item.numberDate}</td>
                                             <td>{moment(item.date).format("DD/MM/YYYY")}</td>
-                                            <td>{item.status ? <div class="text-success">Đã học</div> : <div class="text-danger">Chưa học</div>}</td>
+                                            <td class="status">{item.status ? <div class="text-success">Đã học</div> : <div class="text-danger">Chưa học</div>}</td>
                                             <td>
                                                 <button class="btn btn-primary" onClick={() => ToggleRevise()}><i class="fa fa-repeat" aria-hidden="true"></i></button>
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>

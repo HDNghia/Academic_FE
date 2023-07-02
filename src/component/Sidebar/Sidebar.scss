@@ -8,11 +8,17 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.seacrch_name {
+    display: none;
+}
+
 /** ======================  base css ==============================**/
 
 a:hover {
     text-decoration: none;
 }
+
+
 
 /** ======================  header ==============================**/
 .header {

@@ -37,7 +37,7 @@ function App() {
         </Route>
         <Switch>
           <Route path="/Home">
-            <Home />
+            <Vocabulary />
           </Route>
           <Route path="/Vocabulary">
             <Vocabulary />
