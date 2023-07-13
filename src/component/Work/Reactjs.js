@@ -33,7 +33,7 @@ function Reactjs() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?date=${dateQuesToday}&&part=theory&&subject=Reactjs`)
+            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Reactjs`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Reactjs() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Reactjs&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=Reactjs&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Reactjs() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?subject=Reactjs&&part=theory`);
+            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=Reactjs&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -63,7 +63,7 @@ function Reactjs() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
+            const res = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -73,7 +73,7 @@ function Reactjs() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, data)
+            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -87,21 +87,21 @@ function Reactjs() {
     const handleDeleteQuestion = async (data) => {
         if (data.imageQuestion != '' && data.imageAnswer == '') {
             try {
-                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?question=${data.imageQuestion}`)
+                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?question=${data.imageQuestion}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
             }
         } else if (data.imageAnswer != '' && data.imageQuestion == '') {
             try {
-                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?answer=${data.imageAnswer}`)
+                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?answer=${data.imageAnswer}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
             }
         } else if (data.imageAnswer != '' && data.imageQuestion != '') {
             try {
-                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
+                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
@@ -109,7 +109,7 @@ function Reactjs() {
         }
         else {
             try {
-                let res = await axios.delete(`https://vigorous-quiet-sherbet.glitch.me/v1/delete-question/${data._id}`)
+                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}`)
                 console.log("check res: ", res);
             } catch (error) {
                 console.log(error)
@@ -126,7 +126,7 @@ function Reactjs() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://vigorous-quiet-sherbet.glitch.me/v1/question?question=${search}&&subject=Reactjs&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?question=${search}&&subject=Reactjs&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -148,7 +148,7 @@ function Reactjs() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -169,7 +169,7 @@ function Reactjs() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`https://vigorous-quiet-sherbet.glitch.me/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,

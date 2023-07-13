@@ -60,7 +60,7 @@ function Add(props) {
     const handleAddNewQuestion = async () => {
         if ((imgQuestion != null || selectedImageQuestion != null) && imgAnswer == null && selectedImageAnswer == null) {
             try {
-                const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
+                const res = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question/upload-profile-pic`, fileQuestion)
                 console.log('check file question from BE: ', res.data.downloadURL);
                 let copyState = { ...state }
                 copyState["imageQuestion"] = res.data.downloadURL;
@@ -76,7 +76,7 @@ function Add(props) {
 
         }
         else if ((imgAnswer != null || selectedImageAnswer != null) && imgQuestion == null && selectedImageQuestion == null) {
-            const res = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
+            const res = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', res.data.downloadURL);
             let copyState = { ...state }
             copyState["imageAnswer"] = res.data.downloadURL;
@@ -88,9 +88,9 @@ function Add(props) {
             }
         }
         else if ((selectedImageAnswer != null || imgAnswer != null) && (imgQuestion != null || selectedImageQuestion != null)) {
-            const resQuestion = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileQuestion)
+            const resQuestion = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question/upload-profile-pic`, fileQuestion)
             console.log('check file name from BE: ', resQuestion.data.downloadURL);
-            const resAnswer = await axios.post(`https://vigorous-quiet-sherbet.glitch.me/v1/question/upload-profile-pic`, fileAnswer)
+            const resAnswer = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question/upload-profile-pic`, fileAnswer)
             console.log('check file name from BE: ', resAnswer.data.downloadURL);
             let copyState = { ...state }
             copyState["imageQuestion"] = resQuestion.data.downloadURL;
