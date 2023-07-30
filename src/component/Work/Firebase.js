@@ -33,7 +33,7 @@ function Firebase() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Firebase`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Firebase`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Firebase() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=Firebase&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Firebase&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Firebase() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=Firebase&&part=theory`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Firebase&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -63,7 +63,7 @@ function Firebase() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
+            const res = await axios.post(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -73,7 +73,7 @@ function Firebase() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -86,7 +86,7 @@ function Firebase() {
     }
     const handleDeleteQuestion = async (data) => {
         try {
-            let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/question/${data._id}`)
+            let res = await axios.delete(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question/${data._id}`)
             console.log("check res: ", res);
         } catch (error) {
             console.log(error)
@@ -102,7 +102,7 @@ function Firebase() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?question=${search}&&subject=Firebase&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Firebase&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -124,7 +124,7 @@ function Firebase() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -145,7 +145,7 @@ function Firebase() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,

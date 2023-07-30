@@ -40,8 +40,8 @@ function Home() {
     }
     useEffect(() => {
         async function fetchMyAPI() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=english`);
-            let res1 = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=android`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english`);
+            let res1 = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=android`);
 
             setVocabulary(
                 res.data ? res.data.data : []

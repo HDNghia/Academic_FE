@@ -15,8 +15,8 @@ function Add(props) {
         numberDate: '0',
         date: date,
         status: '0',
-        part: 'theory',
-        subject: 'olap'
+        part: 'Writting',
+        subject: 'english'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);

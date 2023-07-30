@@ -41,6 +41,8 @@ function Sidebar() {
                                     <li class="active"><Link to="/grammar" activeClassName="active" exact={true}>Ngữ pháp</Link></li>
                                     <li class="active"><Link to="/listenning" activeClassName="active" exact={true}>Nghe</Link></li>
                                     <li class="active"><Link to="/reading" activeClassName="active" exact={true}>Đọc</Link></li>
+                                    <li class="active"><Link to="/speaking" activeClassName="active" exact={true}>Nói</Link></li>
+                                    <li class="active"><Link to="/writting" activeClassName="active" exact={true}>Viết</Link></li>
                                 </ul>
                             </li>
 

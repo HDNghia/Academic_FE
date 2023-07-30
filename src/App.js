@@ -16,6 +16,7 @@ import Nodejs from './component/Work/Nodejs';
 import Sql from './component/Work/Sql';
 import MongoDB from './component/Work/MongoDB';
 import Firebase from './component/Work/Firebase';
+import Writting from './component/Toeic/Writting';
 import {
   BrowserRouter as Router,
   Switch,
@@ -79,6 +80,9 @@ function App() {
           </Route>
           <Route path="/Pldc">
             <Pldc />
+          </Route>
+          <Route path="/Writting">
+            <Writting />
           </Route>
         </Switch>
       </div>

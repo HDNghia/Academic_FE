@@ -1,11 +1,11 @@
-import Add from "./DevelopAppAndroid/Add";
-import Update from "./DevelopAppAndroid/Update";
+import Add from "./Speaking/Add";
+import Update from "./Speaking/Update";
 import { useEffect, useState } from "react";
 import "../Responsive.css"
 import axios from "axios";
 import moment from "moment";
-import Revise from "./DevelopAppAndroid/Revise";
-function Android() {
+import Revise from "./Speaking/Revise";
+function Speaking() {
     const [listQuestion, setListQuestion] = useState([]);
     const [lengthQuestion, setLengthQuestion] = useState([]);
     const [modal, setModal] = useState(false);
@@ -33,7 +33,7 @@ function Android() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Android`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=Speaking&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Android() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Android&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Speaking&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Android() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Android&&part=theory`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Speaking`);
             setLengthQuestion(
                 res.data.data
             )
@@ -102,7 +102,7 @@ function Android() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Android&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=english&&part=Speaking&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -116,7 +116,6 @@ function Android() {
                 return (
                     <>
                         {moment(item.date).format('YYYY-MM-DD') < moment(Today).format('YYYY-MM-DD') && item.numberDate <= 21 ? handleReviseQuestion(item) : <></>}
-
                     </>
                 )
             })
@@ -244,7 +243,7 @@ function Android() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'android' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'english' ? <>
                                         <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -364,4 +363,4 @@ function Android() {
         </>
     )
 }
-export default Android;
+export default Speaking;
