@@ -11,6 +11,7 @@ function Sales() {
     const [modal, setModal] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [modalRevise, setModalRevise] = useState(false);
+    const [Revises, setRevises] = useState(false);
     const [currentQuestion, setCurentQuestion] = useState();
     const [QuestionToday, setQuestionToday] = useState([]);
     const [result, setResult] = useState(false);
@@ -39,7 +40,7 @@ function Sales() {
             )
         }
         fetchApi()
-    }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
+    }, [Revises, modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
             let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Sales&&part=theory&&page=${page}&&limit=9`);
@@ -50,7 +51,7 @@ function Sales() {
 
         }
         fetchApi()
-    }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
+    }, [Revises, modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
             let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Sales&&part=theory`);
@@ -120,6 +121,7 @@ function Sales() {
                     </>
                 )
             })
+        setRevises(!Revises);
         ToggleRevise();
     }
     const handleReviseQuestion = async (data) => {
@@ -141,7 +143,7 @@ function Sales() {
         }
     }
     const handleUpdateNumberCount = async (data, number) => {
-        setResult(false)
+        // setResult(false)
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
@@ -210,7 +212,7 @@ function Sales() {
         setPage(page + 1)
         console.log(page)
     }
-    let dem = 1;
+
     return (
         <>
             <Add
@@ -332,7 +334,6 @@ function Sales() {
                 </div>
                 <table class="table table-stripped table-hover bg-light">
                     <thead>
-                        <th>Stt</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
@@ -347,7 +348,6 @@ function Sales() {
                                     <>
 
                                         <tr>
-                                            <td>{dem++}</td>
                                             <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
@@ -362,7 +362,7 @@ function Sales() {
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                                 <button class="btn btn-danger" onClick={() => handleDeleteQuestion(item)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
-                                        </tr>
+                                        </tr >
 
 
                                     </>
@@ -372,7 +372,7 @@ function Sales() {
                 </table>
                 <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
-            </div>
+            </div >
         </>
     )
 }

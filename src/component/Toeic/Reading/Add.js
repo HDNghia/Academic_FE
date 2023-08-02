@@ -15,7 +15,7 @@ function Add(props) {
         numberDate: '0',
         date: date,
         status: '0',
-        part: 'reading',
+        part: 'Reading',
         subject: 'english'
     });
     const [imgQuestion, setImgQuestion] = useState(null);

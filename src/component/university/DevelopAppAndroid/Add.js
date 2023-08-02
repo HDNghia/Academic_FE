@@ -16,7 +16,7 @@ function Add(props) {
         date: date,
         status: '0',
         part: 'theory',
-        subject: 'android'
+        subject: 'Android'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);

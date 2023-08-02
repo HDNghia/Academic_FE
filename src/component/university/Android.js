@@ -210,7 +210,7 @@ function Android() {
         setPage(page + 1)
         console.log(page)
     }
-    let dem = 1;
+
     return (
         <>
             <Add
@@ -244,7 +244,7 @@ function Android() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'android' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Android' ? <>
                                         <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -253,51 +253,63 @@ function Android() {
                                         <div class="mb-5 mt-2">
                                             {
                                                 QuestionToday[count].numberDate === 0 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 1 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 3 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 7 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 14 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 21 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
@@ -320,7 +332,6 @@ function Android() {
                 </div>
                 <table class="table table-stripped table-hover bg-light">
                     <thead>
-                        <th>Stt</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
@@ -335,7 +346,6 @@ function Android() {
                                     <>
 
                                         <tr>
-                                            <td>{dem++}</td>
                                             <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
@@ -350,7 +360,7 @@ function Android() {
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                                 <button class="btn btn-danger" onClick={() => handleDeleteQuestion(item)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
-                                        </tr>
+                                        </tr >
 
 
                                     </>
@@ -360,7 +370,7 @@ function Android() {
                 </table>
                 <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
-            </div>
+            </div >
         </>
     )
 }

@@ -17,6 +17,7 @@ import Sql from './component/Work/Sql';
 import MongoDB from './component/Work/MongoDB';
 import Firebase from './component/Work/Firebase';
 import Writting from './component/Toeic/Writting';
+import Speaking from './component/Toeic/Speaking';
 import {
   BrowserRouter as Router,
   Switch,
@@ -83,6 +84,9 @@ function App() {
           </Route>
           <Route path="/Writting">
             <Writting />
+          </Route>
+          <Route path="/Speaking">
+            <Speaking />
           </Route>
         </Switch>
       </div>

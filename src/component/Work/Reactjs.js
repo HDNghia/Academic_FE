@@ -234,7 +234,7 @@ function Reactjs() {
         setPage(page + 1)
         console.log(page)
     }
-    let dem = 1;
+
     return (
         <>
             <Add
@@ -268,7 +268,7 @@ function Reactjs() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'reactjs' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Reactjs' ? <>
                                         <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -356,7 +356,6 @@ function Reactjs() {
                 </div>
                 <table class="table table-stripped table-hover bg-light">
                     <thead>
-                        <th>Stt</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
@@ -369,9 +368,7 @@ function Reactjs() {
                             && listQuestion.map((item, index) => {
                                 return (
                                     <>
-
                                         <tr>
-                                            <td>{dem++}</td>
                                             <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
@@ -387,8 +384,6 @@ function Reactjs() {
                                                 <button class="btn btn-danger" onClick={() => handleDeleteQuestion(item)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
-
-
                                     </>
                                 )
                             })}

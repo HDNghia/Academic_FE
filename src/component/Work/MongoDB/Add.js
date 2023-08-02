@@ -16,7 +16,7 @@ function Add(props) {
         date: date,
         status: '0',
         part: 'theory',
-        subject: 'mongoDB'
+        subject: 'MongoDB'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);

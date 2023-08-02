@@ -33,7 +33,7 @@ function Reading() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?date=${dateQuesToday}&&part=Reading&&subject=english`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=Reading&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Reading() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=english&&part=Reading&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Reading&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Reading() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?subject=english&&part=Reading`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Reading`);
             setLengthQuestion(
                 res.data.data
             )
@@ -63,7 +63,7 @@ function Reading() {
     const createNewQuestion = async (data) => {
         try {
             console.log("check data from parent: ", data)
-            const res = await axios.post(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
+            const res = await axios.post(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, data)
             Toggle()
             console.log('check res create new question from parent: ', res)
         } catch (error) {
@@ -73,7 +73,7 @@ function Reading() {
     const updateQuestion = async (data) => {
         try {
             console.log("check data from parent in function updateQuestion: ", data)
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, data)
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, data)
             ToggleEdit()
         } catch (error) {
             console.log(error)
@@ -85,35 +85,11 @@ function Reading() {
         ToggleEdit()
     }
     const handleDeleteQuestion = async (data) => {
-        if (data.imageQuestion != '' && data.imageAnswer == '') {
-            try {
-                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?question=${data.imageQuestion}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion == '') {
-            try {
-                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        } else if (data.imageAnswer != '' && data.imageQuestion != '') {
-            try {
-                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}?question=${data.imageQuestion}&&answer=${data.imageAnswer}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        else {
-            try {
-                let res = await axios.delete(`https://hdnghia-academic-be.onrender.com/v1/delete-question/${data._id}`)
-                console.log("check res: ", res);
-            } catch (error) {
-                console.log(error)
-            }
+        try {
+            let res = await axios.delete(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question/${data._id}`)
+            console.log("check res: ", res);
+        } catch (error) {
+            console.log(error)
         }
         setDelete(
             !Delete
@@ -126,7 +102,7 @@ function Reading() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be.onrender.com/v1/question?question=${search}&&subject=english&&part=Reading&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=english&&part=Reading&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -147,7 +123,7 @@ function Reading() {
     }
     const handleReviseQuestion = async (data) => {
         try {
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -168,7 +144,7 @@ function Reading() {
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
-            const res = await axios.put(`https://hdnghia-academic-be.onrender.com/v1/question`, {
+            const res = await axios.put(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question`, {
                 _id: data._id,
                 imageQuestion: data.imageQuestion,
                 imageAnswer: data.imageAnswer,
@@ -233,7 +209,7 @@ function Reading() {
         setPage(page + 1)
         console.log(page)
     }
-    let dem = 1;
+
     return (
         <>
             <Add
@@ -276,51 +252,63 @@ function Reading() {
                                         <div class="mb-5 mt-2">
                                             {
                                                 QuestionToday[count].numberDate === 0 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 1 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 3 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 7 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 14 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
                                             {
                                                 QuestionToday[count].numberDate === 21 ? <>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Học lại</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 0)}>Ôn lại </button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 1)}>1 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 3)}>3 ngày</button>
+                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 7)}>7 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 14)}>14 ngày</button>
-                                                    <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
+                                                    <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 21)}>21 ngày</button>
                                                     <button class='text-center btn btn-primary m-1' onClick={() => handleUpdateNumberCount(QuestionToday[count], 30)}>Đã thuộc</button>
                                                 </> : <></>
                                             }
@@ -343,7 +331,6 @@ function Reading() {
                 </div>
                 <table class="table table-stripped table-hover bg-light">
                     <thead>
-                        <th>Stt</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
@@ -358,7 +345,6 @@ function Reading() {
                                     <>
 
                                         <tr>
-                                            <td>{dem++}</td>
                                             <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
@@ -373,7 +359,7 @@ function Reading() {
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                                 <button class="btn btn-danger" onClick={() => handleDeleteQuestion(item)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
-                                        </tr>
+                                        </tr >
 
 
                                     </>
@@ -383,7 +369,7 @@ function Reading() {
                 </table>
                 <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
-            </div>
+            </div >
         </>
     )
 }

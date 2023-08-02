@@ -233,7 +233,7 @@ function Sql() {
         setPage(page + 1)
         console.log(page)
     }
-    let dem = 1;
+
     return (
         <>
             <Add
@@ -267,7 +267,7 @@ function Sql() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'sql' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Sql' ? <>
                                         <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -355,7 +355,6 @@ function Sql() {
                 </div>
                 <table class="table table-stripped table-hover bg-light">
                     <thead>
-                        <th>Stt</th>
                         <th>Câu hỏi</th>
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
@@ -370,7 +369,6 @@ function Sql() {
                                     <>
 
                                         <tr>
-                                            <td>{dem++}</td>
                                             <td width="25%">{item.imageQuestion != '' ? <> <img class="image_table" src={item.imageQuestion} width="50" /> <br />{item.question} </> : <>{item.question}</>}</td>
                                             {/* <td width="25%">{item.question}</td> */}
                                             {/* <td>{item.question}</td> */}
@@ -385,7 +383,7 @@ function Sql() {
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                                 <button class="btn btn-danger" onClick={() => handleDeleteQuestion(item)}><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             </td>
-                                        </tr>
+                                        </tr >
 
 
                                     </>
@@ -395,7 +393,7 @@ function Sql() {
                 </table>
                 <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
-            </div>
+            </div >
         </>
     )
 }
