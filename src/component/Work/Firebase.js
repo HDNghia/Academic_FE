@@ -336,7 +336,7 @@ function Firebase() {
                         <th>Đáp án</th>
                         <th>Ngày ôn</th>
                         <th>Ngày</th>
-                        <th class="status">Trạng thái</th>
+
                         <th>Thao tác</th>
                     </thead>
                     <tbody>
@@ -354,7 +354,7 @@ function Firebase() {
                                             {/* <td>{item.answer}</td> */}
                                             <td>{item.numberDate}</td>
                                             <td>{moment(item.date).format("DD/MM/YYYY")}</td>
-                                            <td class="status">{item.status ? <div class="text-success">Đã học</div> : <div class="text-danger">Chưa học</div>}</td>
+
                                             <td>
                                                 <button class="btn btn-primary" onClick={() => ToggleRevise()}><i class="fa fa-repeat" aria-hidden="true"></i></button>
                                                 <button class="btn btn-success m-1" onClick={() => handleEditQuestion(item)}><i class="fa fa-pencil" aria-hidden="true"></i></button>
