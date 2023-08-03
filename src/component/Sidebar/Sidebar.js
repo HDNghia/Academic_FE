@@ -4,19 +4,11 @@ import {
     Link
 } from "react-router-dom";
 function Sidebar() {
-    const [state, setState] = useState(false);
     const toggle = () => {
         var menu = document.querySelector('.sidebar')
         var menuIcon = document.querySelector('.menu')
         menu.classList.toggle("fliph");
         menuIcon.classList.toggle("fliph");
-        setState(!state)
-        if (!state) {
-            document.getElementsByClassName('seacrch_name')[0].style.setProperty("display", "block")
-        } else {
-            document.getElementsByClassName('seacrch_name')[0].style.setProperty("display", "none")
-
-        }
     }
 
     return (
