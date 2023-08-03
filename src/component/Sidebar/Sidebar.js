@@ -21,7 +21,7 @@ function Sidebar() {
 
     return (
         <>
-            <header class="header bg-info">
+            <header class="header bg-info" style={{ "position": "fixed", "top": "0", "z-index": "1", "width": "100%", "border-bottom": "1px solid #ffffff" }}>
                 {/* <div class="col-1"></div> */}
                 <div class="menu">
                     <button class="btn btn-info " style={{}} onClick={() => toggle()}>
@@ -30,7 +30,7 @@ function Sidebar() {
                 </div>
                 {/* <div class="text-white col-7 text-center h5" style={{ "margin": "auto", "padding-left": "16%" }}></div> */}
             </header>
-            <div class="main bg-info border-right border-white">
+            <div class="main bg-info border-right border-white" style={{ "z-index": "1" }}>
                 <aside>
                     <div class="sidebar left ">
                         <ul class="list-sidebar bg-info">

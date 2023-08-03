@@ -236,7 +236,7 @@ function Android() {
                 />
             }
 
-            <div class="container text-center mt-3">
+            <div class="container text-center mt-5">
                 <div class="w-100 border Study text-center rounded bg-info ">
                     {
                         QuestionToday && QuestionToday.length > 0
