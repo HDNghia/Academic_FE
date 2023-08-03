@@ -15,7 +15,7 @@ function Add(props) {
         numberDate: '0',
         date: date,
         status: '0',
-        part: 'Vocabulary',
+        part: 'vocabulary',
         subject: 'english'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
