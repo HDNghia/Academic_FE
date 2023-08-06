@@ -184,7 +184,10 @@ function Update(props) {
     return (
         <div>
             <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
-                <ModalHeader >Update question</ModalHeader>
+                <div class="modal-header">
+                    <h5 class="modal-title">Update Questions</h5>
+                    <h5 role="button" onClick={props.toggle}><i class="fa fa-times" aria-hidden="true"></i></h5>
+                </div>
                 <ModalBody>
                     <Form >
                         <FormGroup>

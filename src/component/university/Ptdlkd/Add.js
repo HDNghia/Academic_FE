@@ -176,7 +176,7 @@ function Add(props) {
             <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Questions</h5>
-                    <div role="button" onClick={props.toggle}><i class="fa fa-times" aria-hidden="true"></i></div>
+                    <h5 role="button" onClick={props.toggle}><i class="fa fa-times" aria-hidden="true"></i></h5>
                 </div>
                 <ModalBody>
                     <Form onSubmit={handleSubmit}>
