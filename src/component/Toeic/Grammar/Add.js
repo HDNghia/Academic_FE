@@ -149,15 +149,35 @@ function Add(props) {
         setFileAnswer(formData)
 
     };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setState({
+            imageQuestion: '',
+            imageAnswer: '',
+            question: '',
+            answer: '',
+            numberDate: '0',
+            date: date,
+            status: '0',
+            part: 'Grammar',
+            subject: 'english'
+        })
+        setImgQuestion(null);
+        setFileQuestion(null);
+        setSelectedImageQuestion(null);
+        setImgAnswer(null);
+        setFileAnswer(null);
+        setSelectedImageAnswer(null);
+    }
     return (
         <div>
             <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
                 <div class="modal-header">
                     <h5 class="modal-title">Add New Questions</h5>
-                    <div role="button" onClick={props.toggle}><i class="fa fa-times fa-lg" aria-hidden="true"></i></div>
+                    <div role="button" onClick={props.toggle}><i class="fa fa-times" aria-hidden="true"></i></div>
                 </div>
                 <ModalBody>
-                    <Form >
+                    <Form onSubmit={handleSubmit}>
                         <FormGroup>
                             <Label for="name" class="font-weight-bold">
                                 Câu hỏi
@@ -259,7 +279,7 @@ function Add(props) {
 
                             />
                         </FormGroup>
-                        <Button color="primary" onClick={() => handleAddNewQuestion()}>
+                        <Button type='submit' color="primary" onClick={() => handleAddNewQuestion()}>
                             Create
                         </Button>{' '}
                         <Button color="secondary" onClick={props.toggle}>
