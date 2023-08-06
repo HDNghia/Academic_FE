@@ -152,7 +152,10 @@ function Add(props) {
     return (
         <div>
             <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
-                <ModalHeader >Add New Question</ModalHeader>
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Questions</h5>
+                    <div role="button" onClick={props.toggle}><i class="fa fa-times fa-lg" aria-hidden="true"></i></div>
+                </div>
                 <ModalBody>
                     <Form >
                         <FormGroup>
