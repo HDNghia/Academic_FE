@@ -179,11 +179,17 @@ function Add(props) {
                 <ModalBody>
                     <Form onSubmit={handleSubmit}>
                         <FormGroup>
-
                             <Label for="name" class="font-weight-bold">
                                 Câu hỏi
                             </Label>
-                            <img src={imgQuestion} class="previewQuestion" id="previewQuestion" width={466} />
+                            {
+                                imgQuestion && (
+                                    <div>
+                                        <img src={imgQuestion} class="imageUpdate previewQuestion" id="previewQuestion" width={466} />
+                                        <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgQuestion(null) }}>Remove</button>
+                                    </div>
+                                )
+                            }
                             <Input
                                 onPaste={handlePasteQuestion}
                                 id="question"
@@ -196,7 +202,14 @@ function Add(props) {
                             <Label for="mean" class="font-weight-bold">
                                 Đáp án
                             </Label>
-                            <img src={imgAnswer} class="previewAnswer" id="previewAnswer" width={466} />
+                            {
+                                imgAnswer && (
+                                    <div>
+                                        <img src={imgAnswer} class="imageUpdate previewAnswer" id="previewAnswer" width={466} />
+                                        <button class="btn btn-danger mt-1 mb-1" onClick={() => { setImgAnswer(null) }}>Remove</button>
+                                    </div>
+                                )
+                            }
                             <Input
                                 onPaste={handlePasteAnswer}
                                 id="answer"
