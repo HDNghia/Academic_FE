@@ -33,7 +33,7 @@ function Listenning() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=listenning&&subject=english`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=Listenning&&subject=english`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Listenning() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=listenning&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Listenning&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Listenning() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=listenning`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=english&&part=Listenning`);
             setLengthQuestion(
                 res.data.data
             )
@@ -102,7 +102,7 @@ function Listenning() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=english&&part=listenning&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=english&&part=Listenning&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
