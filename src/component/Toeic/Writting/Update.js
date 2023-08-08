@@ -260,10 +260,10 @@ function Update(props) {
                                 Phần
                             </Label>
                             <select class="form-control" onChange={(event) => handleOnchangeInput(event, "part")}>
-                                {state.part === "listenning" ? <><option value="listenning">Nghe</option> <option value="reading">Đọc</option> <option value="grammar">Ngữ pháp</option> <option value="vocabulary">Từ vựng</option></> : <></>}
-                                {state.part === "grammar" ? <><option value="grammar">Ngữ pháp</option> <option value="reading">Đọc</option> <option value="listenning">Nghe</option> <option value="vocabulary">Từ vựng</option></> : <></>}
-                                {state.part === "vocabulary" ? <><option value="vocabulary">Từ vựng</option> <option value="reading">Đọc</option> <option value="listenning">Nghe</option> <option value="grammar">Ngữ pháp</option></> : <></>}
-                                {state.part === "reading" ? <><option value="reading">Đọc</option> <option value="listenning">Nghe</option> <option value="grammar">Ngữ pháp</option> <option value="vocabulary">Từ vựng</option> </> : <></>}
+                                {state.part === "Listenning" ? <><option value="Listenning">Nghe</option> <option value="Reading">Đọc</option> <option value="Grammar">Ngữ pháp</option> <option value="vocabulary">Từ vựng</option></> : <></>}
+                                {state.part === "Grammar" ? <><option value="Grammar">Ngữ pháp</option> <option value="Reading">Đọc</option> <option value="Listenning">Nghe</option> <option value="vocabulary">Từ vựng</option></> : <></>}
+                                {state.part === "vocabulary" ? <><option value="vocabulary">Từ vựng</option> <option value="Reading">Đọc</option> <option value="Listenning">Nghe</option> <option value="Grammar">Ngữ pháp</option></> : <></>}
+                                {state.part === "Reading" ? <><option value="Reading">Đọc</option> <option value="Listenning">Nghe</option> <option value="Grammar">Ngữ pháp</option> <option value="vocabulary">Từ vựng</option> </> : <></>}
                             </select>
                         </FormGroup>
                         <FormGroup>
