@@ -49,10 +49,12 @@ function Sidebar() {
                             </li>
                             <li> <a href="" data-toggle="collapse" data-target="#BE" class="collapsed active" > <i class="fa fa-book"></i> <span class="nav-label">Back-End</span> <span class="fa fa-chevron-left pull-right"></span> </a>
                                 <ul class="sub-menu collapse" id="BE">
+                                    <li ><Link to="/Github" activeClassName="active" exact={true}>Github</Link></li>
                                     <li ><Link to="/Sql" activeClassName="active" exact={true}>Sql</Link></li>
                                     <li ><Link to="/MongoDB" activeClassName="active" exact={true}>MongoDB</Link></li>
                                     <li ><Link to="/Firebase" activeClassName="active" exact={true}>FireBase</Link></li>
                                     <li ><Link to="/Nodejs" activeClassName="active" exact={true}>Nodejs</Link></li>
+                                    <li ><Link to="/Php" activeClassName="active" exact={true}>Php</Link></li>
                                 </ul>
                             </li>
                             <li> <a href="" data-toggle="collapse" data-target="#FE" class="collapsed active" > <i class="fa fa-book"></i> <span class="nav-label">Front-End</span> <span class="fa fa-chevron-left pull-right"></span> </a>

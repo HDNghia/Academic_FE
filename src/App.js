@@ -18,6 +18,8 @@ import MongoDB from './component/Work/MongoDB';
 import Firebase from './component/Work/Firebase';
 import Writting from './component/Toeic/Writting';
 import Speaking from './component/Toeic/Speaking';
+import Php from './component/Work/Php';
+import Github from './component/Work/Github';
 import {
   BrowserRouter as Router,
   Switch,
@@ -87,6 +89,12 @@ function App() {
           </Route>
           <Route path="/Speaking">
             <Speaking />
+          </Route>
+          <Route path="/Php">
+            <Php />
+          </Route>
+          <Route path="/Github">
+            <Github />
           </Route>
         </Switch>
       </div>
