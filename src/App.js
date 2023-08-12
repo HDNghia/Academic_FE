@@ -20,6 +20,8 @@ import Writting from './component/Toeic/Writting';
 import Speaking from './component/Toeic/Speaking';
 import Php from './component/Work/Php';
 import Github from './component/Work/Github';
+import Laravel from './component/Work/Laravel';
+import Oop from './component/Work/Oop';
 import {
   BrowserRouter as Router,
   Switch,
@@ -95,6 +97,12 @@ function App() {
           </Route>
           <Route path="/Github">
             <Github />
+          </Route>
+          <Route path="/Oop">
+            <Oop />
+          </Route>
+          <Route path="/Laravel">
+            <Laravel />
           </Route>
         </Switch>
       </div>

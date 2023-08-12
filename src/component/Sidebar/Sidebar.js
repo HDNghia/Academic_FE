@@ -55,6 +55,8 @@ function Sidebar() {
                                     <li ><Link to="/Firebase" activeClassName="active" exact={true}>FireBase</Link></li>
                                     <li ><Link to="/Nodejs" activeClassName="active" exact={true}>Nodejs</Link></li>
                                     <li ><Link to="/Php" activeClassName="active" exact={true}>Php</Link></li>
+                                    <li ><Link to="/Oop" activeClassName="active" exact={true}>Oop</Link></li>
+                                    <li ><Link to="/Laravel" activeClassName="active" exact={true}>Laravel</Link></li>
                                 </ul>
                             </li>
                             <li> <a href="" data-toggle="collapse" data-target="#FE" class="collapsed active" > <i class="fa fa-book"></i> <span class="nav-label">Front-End</span> <span class="fa fa-chevron-left pull-right"></span> </a>
