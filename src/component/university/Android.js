@@ -245,9 +245,9 @@ function Android() {
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
                                     {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Android' ? <>
-                                        <h4 class='m-5'>{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" height="500" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
+                                        <h4 class="m-5">{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
-                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" height="500" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
+                                            <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
                                         {/* {!result ? <h1 class='m-5'>{QuestionToday[count].question}</h1> : <h1 class='m-5'>{QuestionToday[count].answer}</h1>} */}
                                         <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                                         <div class="mb-5 mt-2">
