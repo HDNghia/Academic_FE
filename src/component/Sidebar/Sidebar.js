@@ -26,7 +26,7 @@ function Sidebar() {
                 <aside>
                     <div class="sidebar left ">
                         <ul class="list-sidebar bg-info">
-                            <li> <Link to="/Home" activeClassName="active" exact={true}><i class="fa fa-bar-chart-o"></i> <span class="nav-label">trang chủ</span></Link></li>
+                            <li> <Link to="/Home" activeClassName="active" exact={true}><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Trang chủ</span></Link></li>
                             <li> <a href="#" data-toggle="collapse" data-target="#english" class="collapsed active" > <i class="fa fa-pencil"></i> <span class="nav-label">Tiếng anh</span> <span class="fa fa-chevron-left pull-right"></span> </a>
                                 <ul class="sub-menu collapse" id="english">
                                     <li class="active"><Link to="/vocabulary" activeClassName="active" exact={true}>Từ vựng</Link></li>
