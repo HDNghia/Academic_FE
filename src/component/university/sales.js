@@ -212,6 +212,12 @@ function Sales() {
         setPage(page + 1)
         console.log(page)
     }
+    const handleStartPage = () => {
+        setPage(1)
+    }
+    const handleEndPage = () => {
+        setPage(Math.ceil(lengthQuestion.length / 9))
+    }
 
     return (
         <>
@@ -370,8 +376,10 @@ function Sales() {
                             })}
                     </tbody>
                 </table>
-                <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
+                <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleStartPage()}>Start</button>
+                <button class="ml-1 btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
+                <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleEndPage()}>End</button>
             </div >
         </>
     )
