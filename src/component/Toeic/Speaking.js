@@ -374,8 +374,8 @@ function Speaking() {
                     </tbody>
                 </table>
                 <button class="btn btn-secondary" disabled={page <= 1} onClick={() => handleStartPage()}>Start</button>
-                <button class="ml-1 btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}>Prev</button>
-                <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}>Next</button>
+                <button class="ml-1 btn btn-secondary" disabled={page <= 1} onClick={() => handleReducePage()}><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleIncreasePage()}><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 <button class="ml-1 btn btn-secondary" disabled={page >= Math.ceil(lengthQuestion.length / 9)} onClick={() => handleEndPage()}>End</button>
             </div >
         </>
