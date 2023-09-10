@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Form, Row, FormGroup, Col, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter, Label
 } from 'reactstrap';
@@ -16,8 +16,9 @@ function Add(props) {
         date: date,
         status: '0',
         part: 'theory',
-        subject: 'Olap'
+        subject: 'Hdnldn'
     });
+    const fquestion = React.useRef("");
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);
     const [fileQuestion, setFileQuestion] = useState(null)
@@ -108,6 +109,7 @@ function Add(props) {
                 props.createNewQuestion(state);
                 console.log("data modal: ", state);
             }
+
         }
     }
     const handlePasteQuestion = evt => {
@@ -160,7 +162,7 @@ function Add(props) {
             date: date,
             status: '0',
             part: 'theory',
-            subject: 'Olap'
+            subject: 'Hdnldn'
         })
         setImgQuestion(null);
         setFileQuestion(null);
@@ -178,7 +180,7 @@ function Add(props) {
                 </div>
                 <ModalBody>
                     <Form onSubmit={handleSubmit}>
-                        <FormGroup>
+                        <FormGroup >
                             <Label for="name" class="font-weight-bold">
                                 Câu hỏi
                             </Label>
@@ -204,6 +206,8 @@ function Add(props) {
                                 </div>
                             )}
                             <Input
+                                type="text"
+                                ref={fquestion}
                                 onPaste={handlePasteQuestion}
                                 id="question"
                                 name="question"

@@ -16,7 +16,7 @@ function Add(props) {
         date: date,
         status: '0',
         part: 'theory',
-        subject: 'Android'
+        subject: 'Ktdl'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);
@@ -161,7 +161,7 @@ function Add(props) {
             date: date,
             status: '0',
             part: 'theory',
-            subject: 'Android'
+            subject: 'Ktdl'
         })
         setImgQuestion(null);
         setFileQuestion(null);

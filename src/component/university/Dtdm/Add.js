@@ -16,7 +16,7 @@ function Add(props) {
         date: date,
         status: '0',
         part: 'theory',
-        subject: 'Sales'
+        subject: 'Dtdm'
     });
     const [imgQuestion, setImgQuestion] = useState(null);
     const [imgAnswer, setImgAnswer] = useState(null);
@@ -160,7 +160,7 @@ function Add(props) {
             date: date,
             status: '0',
             part: 'theory',
-            subject: 'Sales'
+            subject: 'Dtdm'
         })
         setImgQuestion(null);
         setFileQuestion(null);

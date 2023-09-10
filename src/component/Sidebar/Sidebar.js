@@ -40,11 +40,10 @@ function Sidebar() {
 
                             <li> <a href="" data-toggle="collapse" data-target="#university" class="collapsed active" > <i class="fa fa-book"></i> <span class="nav-label">Đại học</span> <span class="fa fa-chevron-left pull-right"></span> </a>
                                 <ul class="sub-menu collapse" id="university">
-                                    <li ><Link to="/Android" activeClassName="active" exact={true}>Lập trình ứng dụng android</Link></li>
-                                    <li ><Link to="/olap" activeClassName="active" exact={true}>Kho dữ liệu và olap</Link></li>
-                                    <li ><Link to="/Ptdlkd" activeClassName="active" exact={true}>Phân tích dữ liệu kinh doanh</Link></li>
-                                    <li ><Link to="/Sales" activeClassName="active" exact={true}>Sales</Link></li>
-                                    <li ><Link to="/Pldc" activeClassName="active" exact={true}>Pháp luật đại cương</Link></li>
+                                    <li ><Link to="/Ktdl" activeClassName="active" exact={true}>Khai thác dữ liệu</Link></li>
+                                    <li ><Link to="/Dtdm" activeClassName="active" exact={true}>Điện toán đám mây</Link></li>
+                                    <li ><Link to="/Atvbmtt" activeClassName="active" exact={true}>An toàn và bảo mật thông tin</Link></li>
+                                    <li ><Link to="/Hdnldn" activeClassName="active" exact={true}>Hoạch định nguồn lực doanh nghiệp</Link></li>
                                 </ul>
                             </li>
                             <li> <a href="" data-toggle="collapse" data-target="#BE" class="collapsed active" > <i class="fa fa-book"></i> <span class="nav-label">Back-End</span> <span class="fa fa-chevron-left pull-right"></span> </a>

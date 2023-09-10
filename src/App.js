@@ -2,13 +2,12 @@ import './App.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sidebar from './component/Sidebar/Sidebar.js';
-import Android from './component/university/Android.js';
+import Ktdl from './component/university/Ktdl.js';
 import Vocabulary from './component/Toeic/Vocabulary.js';
 import Grammar from './component/Toeic/Grammar.js';
-import Olap from './component/university/Olap.js';
-import Ptdlkd from './component/university/Ptdlkd.js';
-import Sales from './component/university/sales.js';
-import Pldc from './component/university/Pldc.js';
+import Dtdm from './component/university/Dtdm.js';
+import Hdnldn from './component/university/Hdnldn.js';
+import Atvbmtt from './component/university/Atvbmtt.js';
 import Listenning from './component/Toeic/Listenning.js';
 import Reading from './component/Toeic/Reading.js';
 import Reactjs from './component/Work/Reactjs';
@@ -71,20 +70,17 @@ function App() {
           <Route path="/Reactjs">
             <Reactjs />
           </Route>
-          <Route path="/Android">
-            <Android />
+          <Route path="/Ktdl">
+            <Ktdl />
           </Route>
-          <Route path="/olap">
-            <Olap />
+          <Route path="/Dtdm">
+            <Dtdm />
           </Route>
-          <Route path="/Ptdlkd">
-            <Ptdlkd />
+          <Route path="/Hdnldn">
+            <Hdnldn />
           </Route>
-          <Route path="/Sales">
-            <Sales />
-          </Route>
-          <Route path="/Pldc">
-            <Pldc />
+          <Route path="/Atvbmtt">
+            <Atvbmtt />
           </Route>
           <Route path="/Writting">
             <Writting />

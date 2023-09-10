@@ -1,11 +1,11 @@
-import Add from "./Pldc/Add";
-import Update from "./Pldc/Update";
+import Add from "./Dtdm/Add";
+import Update from "./Dtdm/Update";
 import { useEffect, useState } from "react";
 import "../Responsive.css"
 import axios from "axios";
 import moment from "moment";
-import Revise from "./Pldc/Revise";
-function Pldc() {
+import Revise from "./Dtdm/Revise";
+function Dtdm() {
     const [listQuestion, setListQuestion] = useState([]);
     const [lengthQuestion, setLengthQuestion] = useState([]);
     const [modal, setModal] = useState(false);
@@ -33,7 +33,7 @@ function Pldc() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Pldc`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Dtdm`)
             setQuestionToday(
                 res.data.data
             )
@@ -42,7 +42,7 @@ function Pldc() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Pldc&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Dtdm&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -53,7 +53,7 @@ function Pldc() {
     }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Pldc&&part=theory`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Dtdm&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -102,7 +102,7 @@ function Pldc() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Pldc&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Dtdm&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -250,7 +250,7 @@ function Pldc() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Pldc' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Dtdm' ? <>
                                         <h4 class="m-5">{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -382,4 +382,4 @@ function Pldc() {
         </>
     )
 }
-export default Pldc;
+export default Dtdm;

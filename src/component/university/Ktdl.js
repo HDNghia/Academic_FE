@@ -1,17 +1,16 @@
-import Add from "./Sales/Add";
-import Update from "./Sales/Update";
+import Add from "./Ktdl/Add";
+import Update from "./Ktdl/Update";
 import { useEffect, useState } from "react";
 import "../Responsive.css"
 import axios from "axios";
 import moment from "moment";
-import Revise from "./Sales/Revise";
-function Sales() {
+import Revise from "./Ktdl/Revise";
+function Ktdl() {
     const [listQuestion, setListQuestion] = useState([]);
     const [lengthQuestion, setLengthQuestion] = useState([]);
     const [modal, setModal] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [modalRevise, setModalRevise] = useState(false);
-    const [Revises, setRevises] = useState(false);
     const [currentQuestion, setCurentQuestion] = useState();
     const [QuestionToday, setQuestionToday] = useState([]);
     const [result, setResult] = useState(false);
@@ -34,16 +33,16 @@ function Sales() {
     let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Sales`)
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?date=${dateQuesToday}&&part=theory&&subject=Ktdl`)
             setQuestionToday(
                 res.data.data
             )
         }
         fetchApi()
-    }, [Revises, modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
+    }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Sales&&part=theory&&page=${page}&&limit=9`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Ktdl&&part=theory&&page=${page}&&limit=9`);
             setListQuestion(
                 res.data.data
             )
@@ -51,10 +50,10 @@ function Sales() {
 
         }
         fetchApi()
-    }, [Revises, modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
+    }, [modal, modalEdit, Delete, count, BugLengthQuestionToday, searchNUll, page, modalRevise])
     useEffect(() => {
         async function fetchApi() {
-            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Sales&&part=theory`);
+            let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?subject=Ktdl&&part=theory`);
             setLengthQuestion(
                 res.data.data
             )
@@ -103,7 +102,7 @@ function Sales() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Sales&&part=theory&&page=${page}&&limit=9`);
+        let res = await axios.get(`https://hdnghia-academic-be-9ybl.onrender.com/v1/question?question=${search}&&subject=Ktdl&&part=theory&&page=${page}&&limit=9`);
         setListQuestion(
             res.data.data
         )
@@ -121,7 +120,6 @@ function Sales() {
                     </>
                 )
             })
-        setRevises(!Revises);
         ToggleRevise();
     }
     const handleReviseQuestion = async (data) => {
@@ -143,7 +141,7 @@ function Sales() {
         }
     }
     const handleUpdateNumberCount = async (data, number) => {
-        // setResult(false)
+        setResult(false)
         let setCurrentDate = new Date();
         setCurrentDate.setDate(setCurrentDate.getDate() + number)
         try {
@@ -252,7 +250,7 @@ function Sales() {
                             return (
                                 <>
                                     {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {QuestionToday.length}</div> : <></>}
-                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Sales' ? <>
+                                    {index === count && QuestionToday[count].numberDate <= 21 && QuestionToday[count].subject === 'Ktdl' ? <>
                                         <h4 class="m-5">{QuestionToday[count].imageQuestion != '' ? <><img class="revise" src={QuestionToday[count].imageQuestion} width="700" /> <br /> {QuestionToday[count].question} </> : <>{QuestionToday[count].question}</>}</h4>
                                         {result ?
                                             <h4 class='m-5'>{QuestionToday[count].imageAnswer != '' ? <><img class="revise" src={QuestionToday[count].imageAnswer} width="700" /> <br />{QuestionToday[count].answer}</> : <> <div class="bg-white p-2 rounded">{QuestionToday[count].answer}</div></>}</h4> : <></>}
@@ -384,4 +382,4 @@ function Sales() {
         </>
     )
 }
-export default Sales;
+export default Ktdl;
