@@ -13,8 +13,6 @@ import {
   ModalFooter,
   Label,
 } from "reactstrap";
-import axios from "axios";
-import moment from "moment";
 function Update(props) {
   let data = props.currentSubject;
   const [state, setState] = useState({
@@ -30,24 +28,9 @@ function Update(props) {
       ...copyState,
     });
   };
-  const checkValideInput = () => {
-    let isValid = true;
-    let arrInput = ["name", "description"];
-    for (let i = 0; i < arrInput.length; i++) {
-      if (!state[arrInput[i]]) {
-        isValid = false;
-        alert("Missing parameter: " + arrInput[i]);
-        break;
-      }
-    }
-    return isValid;
-  };
+  
   const handleUpdate = async () => {
-    let isValid = checkValideInput();
-    if (isValid === true) {
       props.updateSubject(state);
-      console.log("data modal: ", state);
-    }
   };
 
   return (

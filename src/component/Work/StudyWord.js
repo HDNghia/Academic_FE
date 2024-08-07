@@ -154,9 +154,7 @@ function StudyWord() {
     } catch (error) {
       console.log(error);
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 800);
+      setLoading(false);
     }
     if (number == 0) {
       setCount(count + 1);

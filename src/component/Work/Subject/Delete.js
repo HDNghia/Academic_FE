@@ -9,7 +9,7 @@ function Delete(props) {
     }
     return (
         <div>
-            <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
+            <Modal isOpen={props.modal} fade={false} toggle={props.toggle} centered>
                 <ModalBody>
                     <FormGroup>
                         <Label for="name" class="font-weight-bold h4">
