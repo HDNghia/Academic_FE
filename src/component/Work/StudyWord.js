@@ -295,21 +295,21 @@ function StudyWord() {
                 <>
                   {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
                   {index === count && listWordToday[count].numberDate <= 21 ? <>
-                    <h4 class="m-5">{listWordToday[count].imageQuestion != null ? <><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> <div
+                    <h4 class="m-5">{listWordToday[count].imageQuestion != null ? <><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <div
                       dangerouslySetInnerHTML={{
                         __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                       }}
-                    ></div> </> : <div dangerouslySetInnerHTML={{
+                    ></div> : ''} </> : <>{listWordToday[count].question && <div dangerouslySetInnerHTML={{
                       __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                     }}
-                    ></div>}</h4>
+                    ></div>}</>}</h4>
                     {result ?
-                      <h4 class='m-5'>{listWordToday[count].imageAnswer != null ? <><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /><div dangerouslySetInnerHTML={{
+                      <h4 class='m-5'>{listWordToday[count].imageAnswer != null ? <><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }}
-                      ></div></> : <div class="bg-white p-2 rounded" dangerouslySetInnerHTML={{
+                      ></div>: ''}</> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
-                      }}></div>}</h4> : <></>}
+                      }}/> : ''}</>}</h4> : <></>}
                     {/* {!result ? <h1 class='m-5'>{listWordToday[count].question}</h1> : <h1 class='m-5'>{listWordToday[count].answer}</h1>} */}
                     <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                     <div class="mb-5 mt-2">
@@ -447,11 +447,11 @@ function StudyWord() {
                             ""
                           )}
                           <Media body>
-                            <div
+                            {item.question != null ? <div
                               dangerouslySetInnerHTML={{
                                 __html: item.question.replace(/\n/g, "<br/>"),
                               }}
-                            ></div>
+                            ></div> : ''}
                           </Media>
                         </Media>
                       </td>
