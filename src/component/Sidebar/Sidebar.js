@@ -27,7 +27,9 @@ function Sidebar() {
                     <div class="sidebar left ">
                         <ul class="list-sidebar bg-info">
                             <li> <Link to="/Home" activeClassName="active" exact={true}><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Trang chủ</span></Link></li>
-                            <li> <a href="#" data-toggle="collapse" data-target="#english" class="collapsed active" > <i class="fa fa-pencil"></i> <span class="nav-label">Tiếng anh</span> <span class="fa fa-chevron-left pull-right"></span> </a>
+                            <li> <Link to="/subject" activeClassName="active" exact={true}><i class="fa fa-book"></i> <span class="nav-label">Môn Học</span></Link></li>
+                            <li> <Link to="/revise" activeClassName="active" exact={true}><i class="fa fa-pencil"></i> <span class="nav-label">Ôn Tập</span></Link></li>
+                            {/* <li> <a href="#" data-toggle="collapse" data-target="#english" class="collapsed active" > <i class="fa fa-pencil"></i> <span class="nav-label">Tiếng anh</span> <span class="fa fa-chevron-left pull-right"></span> </a>
                                 <ul class="sub-menu collapse" id="english">
                                     <li class="active"><Link to="/vocabulary" activeClassName="active" exact={true}>Từ vựng</Link></li>
                                     <li class="active"><Link to="/grammar" activeClassName="active" exact={true}>Ngữ pháp</Link></li>
@@ -62,7 +64,7 @@ function Sidebar() {
                                 <ul class="sub-menu collapse" id="FE">
                                     <li ><Link to="/Reactjs" activeClassName="active" exact={true}>Reactjs</Link></li>
                                 </ul>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </aside>

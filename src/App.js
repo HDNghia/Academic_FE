@@ -2,25 +2,8 @@ import './App.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sidebar from './component/Sidebar/Sidebar.js';
-import Ktdl from './component/university/Ktdl.js';
-import Vocabulary from './component/Toeic/Vocabulary.js';
-import Grammar from './component/Toeic/Grammar.js';
-import Dtdm from './component/university/Dtdm.js';
-import Hdnldn from './component/university/Hdnldn.js';
-import Atvbmtt from './component/university/Atvbmtt.js';
-import Listenning from './component/Toeic/Listenning.js';
-import Reading from './component/Toeic/Reading.js';
-import Reactjs from './component/Work/Reactjs';
-import Nodejs from './component/Work/Nodejs';
-import Sql from './component/Work/Sql';
-import MongoDB from './component/Work/MongoDB';
-import Firebase from './component/Work/Firebase';
-import Writting from './component/Toeic/Writting';
-import Speaking from './component/Toeic/Speaking';
-import Php from './component/Work/Php';
-import Github from './component/Work/Github';
-import Laravel from './component/Work/Laravel';
-import Oop from './component/Work/Oop';
+import StudyWord from './component/Work/StudyWord.js';
+import Subject from './component/Work/Subject';
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,20 +19,20 @@ function App() {
       <div className="App">
         <Sidebar />
         <Route path="/" exact render={() => {
-          return <Redirect to="/Home" />
+          return <Redirect to="/subject" />
         }}>
         </Route>
         <Switch>
           <Route path="/Home">
-            <Vocabulary />
+            <StudyWord />
           </Route>
-          <Route path="/Vocabulary">
-            <Vocabulary />
+          <Route path="/subject">
+            <Subject />
           </Route>
-          <Route path="/grammar">
-            <Grammar />
+          <Route path="/revise">
+            <StudyWord />
           </Route>
-          <Route path="/listenning">
+          {/* <Route path="/listenning">
             <Listenning />
           </Route>
           <Route path="/reading">
@@ -99,7 +82,7 @@ function App() {
           </Route>
           <Route path="/Laravel">
             <Laravel />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
