@@ -51,7 +51,7 @@ function StudyWord() {
   useEffect(() => {
     async function fetchApi() {
       let res = await axios.get(
-        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&offset=${offset}&limit=10`
+        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&offset=${offset}&limit=1000`
       );
       setListWordToday(res.data.data);
     }
