@@ -203,7 +203,7 @@ function Add(props) {
     <div>
       <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
         <div class="modal-header">
-          <h5 class="modal-title">Thêm môn học mới</h5>
+          <h5 class="modal-title">Thêm từ mới</h5>
           <h5 role="button" onClick={props.toggle}>
             <i class="fa fa-times" aria-hidden="true"></i>
           </h5>
