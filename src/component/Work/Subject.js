@@ -125,7 +125,6 @@ function Subject() {
                 <div class="row mb-2 ml-1 mt-2">
                     <div class="row col-5">
                         <span><input type='text' onChange={(search) => Search(search)} value={search} class="form-control seacrch_name" placeholder='Tìm kiếm' /></span>
-                        <span><input type="button" class="search_btn btn btn-success ml-2" value="Tìm kiếm môn học" /></span>
                     </div>
                     <div class="text-right col-7 ml-4">
                         <button class="btn btn-primary text-center" onClick={() => Toggle()}>Thêm môn học</button>

@@ -155,8 +155,8 @@ function StudyWord() {
       console.log(error);
     } finally {
       setTimeout(async () => {
-      setLoading(false);
-      }, 700)
+        setLoading(false);
+      }, 800)
     }
     if (number == 0) {
       setCount(count + 1);
@@ -191,7 +191,7 @@ function StudyWord() {
   };
 
   const handleResetToday = () => {
-    setCurentWord({'subject_id': selectSubject});
+    setCurentWord({ 'subject_id': selectSubject });
     ToggleResetToday();
   };
 
@@ -239,9 +239,20 @@ function StudyWord() {
       width: "200px",
       marginLeft: "2%",
     }),
-    menu: (provided) => ({
-      ...provided,
-      width: "300px", // Đảm bảo menu có cùng độ rộng
+    control: (base) => ({
+      ...base,
+      fontSize: '16px', // Điều chỉnh kích thước font để ngăn chặn zoom
+      // Các tùy chỉnh khác
+    }),
+    menu: (base) => ({
+      ...base,
+      width: 'auto', // Đặt chiều ngang tự động
+      minWidth: '100%', // Đảm bảo chiều ngang ít nhất bằng với nút select
+      boxSizing: 'border-box',
+    }),
+    menuList: (base) => ({
+      ...base,
+      width: '100%', // Đặt chiều ngang bằng với phần tử menu
     }),
   };
 
@@ -309,9 +320,9 @@ function StudyWord() {
                       <h4 class='m-5'>{listWordToday[count].imageAnswer != null ? <><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }}
-                      ></div>: ''}</> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" dangerouslySetInnerHTML={{
+                      ></div> : ''}</> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
-                      }}/> : ''}</>}</h4> : <></>}
+                      }} /> : ''}</>}</h4> : <></>}
                     {/* {!result ? <h1 class='m-5'>{listWordToday[count].question}</h1> : <h1 class='m-5'>{listWordToday[count].answer}</h1>} */}
                     <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                     <div class="mb-5 mt-2">
@@ -409,12 +420,12 @@ function StudyWord() {
               />
             </span>
           </div>
-          <div className="col-3 d-flex justify-content-end align-items-center">
-            <button className="btn btn-warning mr-2" onClick={() => handleResetToday()}>
+          <div className="col-3 d-flex justify-content-end align-items-center flex-column flex-md-row">
+            <button className="btn btn-warning mb-2 mb-md-0 mr-md-2" onClick={() => handleResetToday()}>
               Reset
             </button>
             <button className="btn btn-primary" onClick={() => Toggle()}>
-              Thêm môn học
+              Thêm
             </button>
           </div>
         </div>

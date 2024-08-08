@@ -87,9 +87,20 @@ function Add(props) {
       ...provided,
       width: "100%",
     }),
-    menu: (provided) => ({
-      ...provided,
-      width: "300px", // Đảm bảo menu có cùng độ rộng
+    control: (base) => ({
+      ...base,
+      fontSize: '16px', // Điều chỉnh kích thước font để ngăn chặn zoom
+      // Các tùy chỉnh khác
+    }),
+    menu: (base) => ({
+      ...base,
+      width: 'auto', // Đặt chiều ngang tự động
+      minWidth: '100%', // Đảm bảo chiều ngang ít nhất bằng với nút select
+      boxSizing: 'border-box',
+    }),
+    menuList: (base) => ({
+      ...base,
+      width: '100%', // Đặt chiều ngang bằng với phần tử menu
     }),
   };
   const handleDateChange = (date) => {
@@ -176,6 +187,18 @@ function Add(props) {
     return parse(dateString, "dd-MM-yyyy", new Date());
   };
 
+  const imgStyle = {
+    maxWidth: "100%",
+    height: "auto",
+    display: "block",
+  };
+
+  const mobileImgStyle = {
+    width: "361px",
+    height: "auto",
+    display: "block",
+  };
+
   return (
     <div>
       <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
@@ -205,7 +228,7 @@ function Add(props) {
               </Label>
               {imgQuestion && (
                 <div>
-                  <img src={imgQuestion} alt="Selected" width="466" />
+                  <img src={imgQuestion} alt="Selected" style={window.innerWidth <= 768 ? mobileImgStyle : imgStyle} />
                   <button
                     class="btn btn-danger mt-1 mb-1"
                     onClick={() => {
@@ -223,7 +246,7 @@ function Add(props) {
                 placeholder="Write your content here..."
                 rows="4"
                 cols="50"
-                style={{ marginTop: "10px", width: "100%" }}
+                style={{ marginTop: "10px", width: "100%", fontSize: "16px"  }}
               />
               <input
                 type="file"
@@ -237,7 +260,7 @@ function Add(props) {
               </Label>
               {imgAnswer && (
                 <div>
-                  <img src={imgAnswer} alt="Selected" width="466" />
+                  <img src={imgAnswer} alt="Selected" style={window.innerWidth <= 768 ? mobileImgStyle : imgStyle} />
                   <button
                     class="btn btn-danger mt-1 mb-1"
                     onClick={() => {
@@ -255,7 +278,7 @@ function Add(props) {
                 placeholder="Write your content here..."
                 rows="4"
                 cols="50"
-                style={{ marginTop: "10px", width: "100%" }}
+                style={{ marginTop: "10px", width: "100%", fontSize: "16px" }}
               />
               <input
                 type="file"
@@ -264,7 +287,7 @@ function Add(props) {
               />
             </FormGroup>
             <Row>
-              <Col sm="6">
+              <Col xs="6" sm="6">
                 <FormGroup>
                   <Label for="numberDate">Số ngày ôn</Label>
                   <Input
@@ -280,7 +303,7 @@ function Add(props) {
                   />
                 </FormGroup>
               </Col>
-              <Col sm="6">
+              <Col xs="6" sm="6">
                 <FormGroup>
                   <Label for="date">Ngày</Label>
                   <DatePicker
