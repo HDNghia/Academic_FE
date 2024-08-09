@@ -262,7 +262,7 @@ function StudyWord() {
         modal={modal}
         toggle={Toggle}
         createNewWord={createNewWord}
-        value={selectSubject?.value}
+        selectSubject={selectSubject}
         onChange={SearchSubject}
         options={options}
         isSearchable={true}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import {
   Form,
@@ -29,6 +29,15 @@ function Add(props) {
     numberDate: 0,
     date: dateQuesToday,
   });
+
+  useEffect(() => {
+    if (props.modal) { // Kiểm tra nếu modal mở
+      setState(prevState => ({
+        ...prevState,
+        subject_id: props.selectSubject,
+      }));
+    }
+  }, [props.modal, props.selectSubject]);
 
   const handleOnchangeInput = (event, item) => {
     let copyState = { ...state };
@@ -199,6 +208,9 @@ function Add(props) {
     display: "block",
   };
 
+  // Tìm object trong options dựa trên props.subject_id
+  const selectedOption = props.options.find(option => option.xid === props.selectSubject);
+
   return (
     <div>
       <Modal isOpen={props.modal} fade={false} toggle={props.toggle}>
@@ -215,7 +227,7 @@ function Add(props) {
                 Chọn môn học
               </Label>
               <Select
-                value={state.subject_id?.value}
+                value={selectedOption}
                 onChange={SearchSubject}
                 options={props.options}
                 isSearchable={true}
