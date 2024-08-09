@@ -29,3 +29,9 @@
         width: 360px;
     }
 }
+
+@media (max-width: 790px) and (min-width: 600px) {
+    .revise {
+        width: 400px;
+    }
+}
