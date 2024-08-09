@@ -298,17 +298,17 @@ function StudyWord() {
         />
       )}
 
-      <div class="container text-center mt-5">
-        <div class="w-100 border Study text-center rounded bg-info ">
-          {loading && <div class="p-5"> <div class="spinner-border" role="status" /> </div>}
+      <div class="container mt-5">
+        <div class="w-100 border rounded bg-info ">
+          {loading && <div class="p-5 text-center"> <div class="spinner-border" role="status" /> </div>}
           {
             !loading && listWordToday && listWordToday.length > 0
             && listWordToday.map((item, index) => {
               return (
                 <>
-                  {index === count ? <div class="h4 mt-3 text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
+                  {index === count ? <div class="h4 mt-3 text-center text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
                   {index === count && listWordToday[count].numberDate <= 21 ? <>
-                    <h4 class="m-5">{listWordToday[count].imageQuestion != null ? <><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <div
+                    <h4 class="m-5 text-center">{listWordToday[count].imageQuestion != null ? <><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <div
                       dangerouslySetInnerHTML={{
                         __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                       }}
@@ -317,15 +317,17 @@ function StudyWord() {
                     }}
                     ></div>}</>}</h4>
                     {result ?
-                      <h4 class='m-5'>{listWordToday[count].imageAnswer != null ? <><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
+                      <div class='m-5'>{listWordToday[count].imageAnswer != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }}
-                      ></div> : ''}</> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" dangerouslySetInnerHTML={{
+                      ></div> : ''}</div> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }} dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
-                      }} /> : ''}</>}</h4> : <></>}
+                      }} /> : ''}</>}</div> : <></>}
                     {/* {!result ? <h1 class='m-5'>{listWordToday[count].question}</h1> : <h1 class='m-5'>{listWordToday[count].answer}</h1>} */}
+                    <div class="text-center">
                     <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
-                    <div class="mb-5 mt-2">
+                    </div>
+                    <div class="mb-5 mt-2 text-center">
                       {
                         listWordToday[count].numberDate == 0 ? <>
                           <button class='text-center btn btn-secondary m-1' onClick={() => handleUpdateNumberCount(listWordToday[count], 0)}>Học lại </button>
@@ -490,6 +492,7 @@ function StudyWord() {
               })}
           </tbody>
         </table>
+        <div class='text-center'>
         <button
           class="btn btn-secondary"
           disabled={offset == 0}
@@ -518,6 +521,7 @@ function StudyWord() {
         >
           End
         </button>
+        </div>
       </div>
     </>
   );
