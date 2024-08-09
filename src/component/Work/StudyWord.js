@@ -473,6 +473,7 @@ function StudyWord() {
                       <td>{item.numberDate}</td>
                       <td>{item.date}</td>
                       <td>
+                        <div class='text-center'>
                         <button
                           class="btn btn-success m-1"
                           onClick={() => handleEditWord(item)}
@@ -485,6 +486,7 @@ function StudyWord() {
                         >
                           <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
+                        </div>
                       </td>
                     </tr>
                   </>
