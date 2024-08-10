@@ -5,9 +5,8 @@ import Update from "./StudyWord/Update";
 import { useEffect, useState } from "react";
 import "../Responsive.css";
 import axios from "axios";
-import moment from "moment";
 import Select from "react-select";
-import { Media, Spinner } from "reactstrap";
+import { Media } from "reactstrap";
 function StudyWord() {
   let apiUrl = process.env.REACT_APP_API_URL;
   const [loading, setLoading] = useState(false);
