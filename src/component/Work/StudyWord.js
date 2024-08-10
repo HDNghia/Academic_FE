@@ -308,7 +308,6 @@ function StudyWord() {
                   {index === count ? <div class="h4 mt-3 text-center text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
                   {index === count && listWordToday[count].numberDate <= 21 ? <>
                     <h4 class="m-5 text-center">{listWordToday[count].imageQuestion != null ? <><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <div
-                      class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }}
                       dangerouslySetInnerHTML={{
                         __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                       }}
@@ -317,7 +316,7 @@ function StudyWord() {
                     }}
                     ></div>}</>}</h4>
                     {result ?
-                      <div class='m-5'>{listWordToday[count].imageAnswer != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }} dangerouslySetInnerHTML={{
+                      <div class='m-5'>{listWordToday[count].imageAnswer != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }}
                       ></div> : ''}</div> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }} dangerouslySetInnerHTML={{
@@ -325,7 +324,7 @@ function StudyWord() {
                       }} /> : ''}</>}</div> : <></>}
                     {/* {!result ? <h1 class='m-5'>{listWordToday[count].question}</h1> : <h1 class='m-5'>{listWordToday[count].answer}</h1>} */}
                     <div class="text-center">
-                      <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
+                    <button class='btn btn-danger' onClick={() => handleShowResult()}>Xem đáp án</button>
                     </div>
                     <div class="mb-5 mt-2 text-center">
                       {
@@ -474,18 +473,18 @@ function StudyWord() {
                       <td>{item.date}</td>
                       <td>
                         <div class='text-center'>
-                          <button
-                            class="btn btn-success m-1"
-                            onClick={() => handleEditWord(item)}
-                          >
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                          </button>
-                          <button
-                            class="btn btn-danger"
-                            onClick={() => handleDeleteWord(item)}
-                          >
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-                          </button>
+                        <button
+                          class="btn btn-success m-1"
+                          onClick={() => handleEditWord(item)}
+                        >
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          onClick={() => handleDeleteWord(item)}
+                        >
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                         </div>
                       </td>
                     </tr>
@@ -495,34 +494,34 @@ function StudyWord() {
           </tbody>
         </table>
         <div class='text-center'>
-          <button
-            class="btn btn-secondary"
-            disabled={offset == 0}
-            onClick={() => handleStartPage()}
-          >
-            Start
-          </button>
-          <button
-            class="ml-1 btn btn-secondary"
-            disabled={offset == 0}
-            onClick={() => handleReducePage()}
-          >
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <button
-            class="ml-1 btn btn-secondary"
-            disabled={offset + 10 > listWord.length}
-            onClick={() => handleIncreasePage()}
-          >
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-          </button>
-          <button
-            class="ml-1 btn btn-secondary"
-            disabled={offset + 10 > listWord.length}
-            onClick={() => handleEndPage()}
-          >
-            End
-          </button>
+        <button
+          class="btn btn-secondary"
+          disabled={offset == 0}
+          onClick={() => handleStartPage()}
+        >
+          Start
+        </button>
+        <button
+          class="ml-1 btn btn-secondary"
+          disabled={offset == 0}
+          onClick={() => handleReducePage()}
+        >
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button
+          class="ml-1 btn btn-secondary"
+          disabled={offset + 10 > listWord.length}
+          onClick={() => handleIncreasePage()}
+        >
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <button
+          class="ml-1 btn btn-secondary"
+          disabled={offset + 10 > listWord.length}
+          onClick={() => handleEndPage()}
+        >
+          End
+        </button>
         </div>
       </div>
     </>
