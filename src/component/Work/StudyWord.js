@@ -11,6 +11,7 @@ function StudyWord() {
   let apiUrl = process.env.REACT_APP_API_URL;
   const [loading, setLoading] = useState(false);
   const [listWord, setListWord] = useState([]);
+  const [lengthWord, setLengthWord] = useState([]);
   const [listWordToday, setListWordToday] = useState([]);
   const [getListWordToday, setGetListWordToday] = useState(false);
   const [listSubject, setListSubject] = useState([]);
@@ -42,7 +43,11 @@ function StudyWord() {
       let res = await axios.get(
         `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&subject_id=${selectSubject}&offset=${offset}&limit=10`
       );
+      let res1 = await axios.get(
+        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&subject_id=${selectSubject}&limit=10000`
+      );
       setListWord(res.data.data);
+      setLengthWord(res1.data.data);
     }
     fetchApi();
   }, [modal, modalEdit, modalDelete, modalReset, offset, selectSubject, getListWordToday]);
@@ -50,7 +55,7 @@ function StudyWord() {
   useEffect(() => {
     async function fetchApi() {
       let res = await axios.get(
-        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&offset=${offset}&limit=1000`
+        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&limit=1000`
       );
       setListWordToday(res.data.data);
     }
@@ -60,7 +65,7 @@ function StudyWord() {
   useEffect(() => {
     async function fetchApi() {
       let res = await axios.get(
-        `${apiUrl}/api/v1/subject?fields=xid,name,description&limit=10`
+        `${apiUrl}/api/v1/subject?fields=xid,name,description&limit=1000`
       );
       setListSubject(res.data.data);
     }
@@ -215,7 +220,7 @@ function StudyWord() {
     setOffset(0);
   };
   const handleEndPage = () => {
-    setOffset(listWord.length);
+    setOffset(Math.floor(lengthWord.length / 10) * 10);
   };
 
   const options = listSubject.map((subject) => ({
@@ -510,14 +515,14 @@ function StudyWord() {
         </button>
         <button
           class="ml-1 btn btn-secondary"
-          disabled={offset + 10 > listWord.length}
+          disabled={lengthWord.length - offset <= 10}
           onClick={() => handleIncreasePage()}
         >
           <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
         <button
           class="ml-1 btn btn-secondary"
-          disabled={offset + 10 > listWord.length}
+          disabled={lengthWord.length - offset <= 10}
           onClick={() => handleEndPage()}
         >
           End
