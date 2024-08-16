@@ -38,16 +38,23 @@ function StudyWord() {
   const ToggleResetToday = () => {
     setModalReset(!modalReset);
   };
+
+  useEffect(() => {
+    async function fetchApi() {
+      let res = await axios.get(
+        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&subject_id=${selectSubject}&limit=10000`
+      );
+      setLengthWord(res.data.data);
+    }
+    fetchApi();
+  }, [modal, modalEdit, modalDelete, modalReset, selectSubject, getListWordToday]);
+
   useEffect(() => {
     async function fetchApi() {
       let res = await axios.get(
         `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&subject_id=${selectSubject}&offset=${offset}&limit=10`
       );
-      let res1 = await axios.get(
-        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&subject_id=${selectSubject}&limit=10000`
-      );
       setListWord(res.data.data);
-      setLengthWord(res1.data.data);
     }
     fetchApi();
   }, [modal, modalEdit, modalDelete, modalReset, offset, selectSubject, getListWordToday]);
