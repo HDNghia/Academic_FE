@@ -13,7 +13,6 @@ function Subject() {
     const [modalDelete, setModalDelete] = useState(false);
     const [currentSubject, setCurentSubject] = useState();
     const [search, setSearch] = useState();
-    const [searchNUll, setSearchNull] = useState(false);
     const [offset, setOffset] = useState(0);
     const Toggle = () => {
         setModal(!modal)
@@ -24,8 +23,6 @@ function Subject() {
     const ToggleDelete = () => {
         setModalDelete(!modalDelete)
     }
-    let Today = new Date();
-    let dateQuesToday = moment(Today).format('YYYY-MM-DD');
     useEffect(() => {
         async function fetchApi() {
             let res = await axios.get(`${apiUrl}/api/v1/subject?fields=xid,name,description&offset=${offset}&limit=10`)
