@@ -474,8 +474,8 @@ function StudyWord() {
                           )}
                           <Media body>
                             {item.question != null ? <div
+                              class='widthName'
                               style={{
-                                maxWidth: '300px',
                                 display: '-webkit-box',
                                 WebkitLineClamp: 5, // Giới hạn hiển thị 5 dòng
                                 WebkitBoxOrient: 'vertical',
