@@ -307,19 +307,19 @@ function StudyWord() {
                 <>
                   {index === count ? <div class="h4 mt-3 text-center text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
                   {index === count && listWordToday[count].numberDate <= 21 ? <>
-                    <div class="m-5">{listWordToday[count].imageQuestion != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <div
+                    <div class="m-5">{listWordToday[count].imageQuestion != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /> <br /> {listWordToday[count].question != null ? <h4
                       dangerouslySetInnerHTML={{
                         __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                       }}
-                    ></div> : ''} </div> : <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }}>{listWordToday[count].question && <div dangerouslySetInnerHTML={{
+                    ></h4> : ''} </div> : <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }}>{listWordToday[count].question && <div dangerouslySetInnerHTML={{
                       __html: listWordToday[count].question.replace(/\n/g, "<br/>"),
                     }}
                     ></div>}</div>}</div>
                     {result ?
-                      <div class='m-5'>{listWordToday[count].imageAnswer != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <div dangerouslySetInnerHTML={{
+                      <div class='m-5'>{listWordToday[count].imageAnswer != null ? <div class='text-center'><img class="revise" src={listWordToday[count].imageAnswer_url} width="700" /> <br /> {listWordToday[count].answer != null ? <h4 dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }}
-                      ></div> : ''}</div> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }} dangerouslySetInnerHTML={{
+                      ></h4> : ''}</div> : <>{listWordToday[count].answer != null ? <div class="bg-white p-2 rounded" style={{ maxWidth: '500px', margin: '0 auto', }} dangerouslySetInnerHTML={{
                         __html: listWordToday[count].answer.replace(/\n/g, "<br/>"),
                       }} /> : ''}</>}</div> : <></>}
                     {/* {!result ? <h1 class='m-5'>{listWordToday[count].question}</h1> : <h1 class='m-5'>{listWordToday[count].answer}</h1>} */}
