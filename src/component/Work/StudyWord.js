@@ -62,7 +62,7 @@ function StudyWord() {
   useEffect(() => {
     async function fetchApi() {
       let res = await axios.get(
-        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&limit=1000`
+        `${apiUrl}/api/v1/revise?fields=xid,question,imageQuestion,imageQuestion_url,answer,imageAnswer,imageAnswer_url,numberDate,date,subject{xid,name,description}&type=today&subject_id=${selectSubject}&limit=1000&filters=numberDate ne 30`
       );
       setListWordToday(res.data.data);
     }
@@ -102,8 +102,6 @@ function StudyWord() {
     formData.append("answer", data.answer);
     formData.append("date", data.date);
     formData.append("numberDate", data.numberDate);
-    console.log("chekc data: ", data);
-    console.log("chekc formData: ", formData);
     try {
       const res = await axios.post(`${apiUrl}/api/v1/revise`, formData, {
         headers: {
