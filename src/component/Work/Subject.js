@@ -73,7 +73,7 @@ function Subject() {
         setSearch(
             event.target.value
         )
-        let res = await axios.get(`${apiUrl}/api/v1/subject?fields=name,description&limit=10&filters=(name%20lk%20%22%25${search}%25%22%20)`);
+        let res = await axios.get(`${apiUrl}/api/v1/subject?fields=xid,name,description&limit=10&filters=(name%20lk%20%22%25${search}%25%22%20)`);
         setListSubject(
             res.data.data
         )
