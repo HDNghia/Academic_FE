@@ -317,7 +317,7 @@ function StudyWord() {
                 <>
                   {index === count ? <div class="h4 mt-3 text-center text-danger">Số câu hỏi cần ôn là: {listWordToday.length}</div> : <></>}
                   {index === count && listWordToday[count].numberDate <= 21 ? <>
-                    <div class="m-5">{listWordToday[count].imageQuestion != null ? <div><div class='text-center'><img class="revisetext-center" src={listWordToday[count].imageQuestion_url} width="700" /></div> <br /> {listWordToday[count].question != null ? <div 
+                    <div class="m-5">{listWordToday[count].imageQuestion != null ? <div><div class='text-center'><img class="revise" src={listWordToday[count].imageQuestion_url} width="700" /></div> <br /> {listWordToday[count].question != null ? <div 
                       class="bg-white p-2 rounded" 
                       style={{ maxWidth: '500px', margin: '0 auto' }}
                       dangerouslySetInnerHTML={{
